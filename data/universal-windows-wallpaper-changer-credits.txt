@@ -1,0 +1,58 @@
+[Cyan]
+[Cyan] SUPPORT DEVELOPMENT
+[Cyan] ===================
+
+ Universal Windows Wallpaper Changer sets a fresh 4K wallpaper on
+ Windows from free image services (Bing, Picsum, Wallhaven), your
+ own folders, or your own links - once, or on a schedule in the
+ background with a tray icon.
+
+ No administrator rights are needed and the tool is free and
+ open-source. The provider integrations, background mode and the
+ image filtering pipeline are maintained in my free time.
+
+ If this tool saved you time or made your desktop a little nicer,
+ please consider supporting development.
+
+[Cyan]
+[Cyan] SUPPORTERS
+[Cyan] ==========
+
+ If you are a company or IT organization using this tool in
+ production environments, you can support development and
+ optionally have your company listed in this section as a supporter.
+
+ This can include:
+ - Company name mention in in-app credits section
+ - Optional listing in GitHub README (Sponsors section)
+ - Optional acknowledgment in GitHub release notes
+
+[Green] - Support Patreon:[Yellow] tinyurl.com/fet-patron[Gray] - press [Black,Gray][1][Gray,Black] key
+[Green] - PayPal Donation:[Yellow] tinyurl.com/fet-paypal[Gray] - press [Black,Gray][2][Gray,Black] key
+[Green] - Buy Me a Coffee:[Yellow] tinyurl.com/fet-coffee[Gray] - press [Black,Gray][3][Gray,Black] key
+[Green] - Ko-Fi Support:[Yellow] tinyurl.com/fet-mykofi[Gray] - press [Black,Gray][4][Gray,Black] key
+[Green] - GitHub Sponsors:[Yellow] tinyurl.com/fet-github[Gray] - press [Black,Gray][5][Gray,Black] key
+
+[Cyan]
+[Cyan] PROJECT IMPACT
+[Cyan] ==============
+
+[Green] - Works with Windows 10 and Windows 11
+[Green] - Free image sources that need no API key (Bing, Picsum, Wallhaven)
+[Green] - Optional API keys for Flickr, Immich, Pexels, Pixabay, Unsplash
+[Green] - Background mode with tray icon and start at sign-in
+[Green] - Open-source and free to use
+
+[Cyan]
+[Cyan] CAREER OPPORTUNITY
+[Cyan] ==================
+
+ I specialize in Windows deployment, driver automation, hardware
+ compatibility, Microsoft technologies, infrastructure analysis,
+ and custom IT tooling.
+
+ If your organization faces automation, deployment, device management,
+ or unsupported hardware environments, let's discuss how I can help.
+
+[Green] - Business Contact:[Yellow] firstever.tech/contact[Gray] - press [Black,Gray][F][Gray,Black] key
+[Green] - LinkedIn Profile:[Yellow] tinyurl.com/fet-linked[Gray] - press [Black,Gray][L][Gray,Black] key
