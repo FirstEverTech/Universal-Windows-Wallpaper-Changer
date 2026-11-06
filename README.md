@@ -1,147 +1,204 @@
-🇬🇧 English | 🇵🇱 Polski
+<p align="left">
+  <a href="README.md">🇬🇧 English</a> |
+  <a href="https://translate.google.com/translate?sl=en&tl=pl&u=https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer">🇵🇱 Polski</a> |
+  <a href="https://translate.google.com/translate?sl=en&tl=de&u=https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer">🇩🇪 Deutsch</a> |
+  <a href="https://translate.google.com/translate?sl=en&tl=fr&u=https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer">🇫🇷 Français</a> |
+  <a href="https://translate.google.com/translate?sl=en&tl=es&u=https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer">🇪🇸 Español</a> |
+  <a href="https://translate.google.com/translate?sl=en&tl=pt&u=https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer">🇧🇷 Português</a> |
+  <a href="https://translate.google.com/translate?sl=en&tl=nl&u=https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer">🇳🇱 Nederlands</a>
+  <br>
+  <a href="https://translate.google.com/translate?sl=en&tl=zh-CN&u=https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer">🇨🇳 中文</a> |
+  <a href="https://translate.google.com/translate?sl=en&tl=ja&u=https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer">🇯🇵 日本語</a> |
+  <a href="https://translate.google.com/translate?sl=en&tl=ko&u=https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer">🇰🇷 한국어</a> |
+  <a href="https://translate.google.com/translate?sl=en&tl=it&u=https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer">🇮🇹 Italiano</a> |
+  <a href="https://translate.google.com/translate?sl=en&tl=tr&u=https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer">🇹🇷 Türkçe</a> |
+  <a href="https://translate.google.com/translate?sl=en&tl=ar&u=https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer">🇸🇦 العربية</a> |
+  <a href="https://translate.google.com/translate?sl=en&tl=hi&u=https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer">🇮🇳 हिन्दी</a> |
+  <a href="https://translate.google.com/translate?sl=en&tl=ru&u=https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer">🇷🇺 Русский</a>
+</p>
 
+<a id="top"></a>
 # 🖼️ **Universal Windows Wallpaper Changer**
 
-## 🔧 Set a Fresh 4K Wallpaper on Windows — Once, or on a Schedule
+[![Version](https://img.shields.io/badge/Version-2026.11.0001-red?style=flat-square)](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer/releases)[![Windows](https://img.shields.io/badge/Windows-10%2F11-blue?style=flat-square&color=blueviolet)](https://www.microsoft.com/windows)[![PowerShell](https://img.shields.io/badge/PowerShell-5.1+-blueviolet?style=flat-square)](https://learn.microsoft.com/en-us/powershell/scripting/install/install-powershell-on-windows?view=powershell-7.5)[![DotNET](https://img.shields.io/badge/.NET-4.7.2+-blueviolet?style=flat-square)](https://dotnet.microsoft.com/en-us/download/dotnet-framework)[![Downloads](https://img.shields.io/github/downloads/FirstEverTech/Universal-Windows-Wallpaper-Changer/total?style=flat-square&color=gold&label=Downloads)](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer/releases)[![GitHub Stars](https://img.shields.io/github/stars/FirstEverTech/Universal-Windows-Wallpaper-Changer?style=flat-square&color=gold&label=Stars)](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer)  
+[![License](https://img.shields.io/badge/License-MIT-0056b3?style=flat-square)](LICENSE)[![PS Gallery Version](https://img.shields.io/powershellgallery/v/universal-windows-wallpaper-changer?style=flat-square&label=PowerShell+Gallery)](https://www.powershellgallery.com/packages/universal-windows-wallpaper-changer)[![Issues](https://img.shields.io/github/issues/FirstEverTech/Universal-Windows-Wallpaper-Changer?style=flat-square&label=Issues)](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer/issues)
 
+<a href="https://github.com/FirstEverTech">
+  <img width="600" alt="" title="Universal Windows Wallpaper Changer"
+       src="assets/Universal-Windows-Wallpaper-Changer.png" />
+</a>
+
+## 🔧 Set a Fresh 4K Wallpaper on Windows — Once, or on a Schedule
 **Universal Windows Wallpaper Changer** downloads a random, free 4K wallpaper from a free image service (or picks one from your own folder) and applies it as the Windows desktop wallpaper. Runs once, or keeps changing in the background with a tray icon.
 
 This project was built through a pragmatic collaboration between human expertise and AI-assisted tooling.
 
 ### Why This Tool Exists
+Windows has no built-in way to rotate wallpapers from multiple free sources without third-party bloatware. This tool gives you a zero-config way to keep your desktop fresh — with no API keys required for the default sources and no administrator rights.
 
-Windows has no built-in way to rotate wallpapers from multiple free sources without third-party bloatware. This tool gives you:
-- **Zero API keys needed** for the default sources (Bing, Picsum, Wallhaven)
-- **Background mode** with tray icon and start at sign-in
-- **SHA-256 self-verification** against GitHub Releases
-- **No administrator rights** required
+---
 
-* * *
+[![Sources](https://img.shields.io/badge/Sources-11-blue?style=flat-square)](#41-multiple-free-sources)[![Free Without Key](https://img.shields.io/badge/No_API_Key-Bing_%7C_Picsum_%7C_Wallhaven-blue?style=flat-square)](#41-multiple-free-sources)[![Background Mode](https://img.shields.io/badge/Background-Tray_%2B_Sign--in-blue?style=flat-square)](#42-background-mode)[![Self-Hash](https://img.shields.io/badge/Self--Hash-SHA256-blue?style=flat-square)](#81-verified-security-layers)[![Admin Rights](https://img.shields.io/badge/Admin_Rights-Not_Required-blue?style=flat-square)](#5-system-requirements)
 
-👉 Share your feedback via [Issues](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer/issues)!
+For detailed documentation and guides, see:  
+→ **[How the image filter pipeline works](#73-download--filter-pipeline)**  
+→ **[Deploying via MDM / silent mode](#92-it-professionals)**  
+→ **[Security and verification](#8-security-first-approach)**  
 
-* * *
+👉 [Share your feedback!](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer/issues)
+
+---
 
 ## 💖 Support This Project
 
-**Universal Windows Wallpaper Changer** is free and open-source — maintained by a single developer. The provider integrations, background mode, and image filtering pipeline are maintained in my free time.
+**Universal Windows Wallpaper Changer** is free and open-source — maintained by a single developer.  
+The provider integrations, background mode and image filtering pipeline are maintained in my free time.
 
-If this tool saved you time or made your desktop a little nicer, consider supporting development.
+[![Patreon](https://img.shields.io/badge/Patreon-Patron-F96854?style=for-the-badge&logo=patreon)](https://www.patreon.com/c/firstevertech/membership)[![GitHub Sponsors](https://img.shields.io/badge/GitHub-Sponsor-EA4AAA?style=for-the-badge&logo=githubsponsors)](https://github.com/sponsors/FirstEverTech)[![PayPal](https://img.shields.io/badge/PayPal-Donate-00457C?style=for-the-badge&logo=paypal)](https://www.paypal.com/donate/?hosted_button_id=48VGDSCNJAPTJ)[![Buy Me a Coffee](https://img.shields.io/badge/Coffee-Donate-FFDD00?style=for-the-badge&logo=buymeacoffee)](https://buymeacoffee.com/firstevertech)[![Ko-fi](https://img.shields.io/badge/Ko--fi-Donate-FF5E5B?style=for-the-badge&logo=kofi)](https://ko-fi.com/firstever)
+
+If this tool saved you time or made your desktop a little nicer — consider supporting development. 🎯 **[Follow on Patreon for free](https://www.patreon.com/FirstEverTech)** — stay updated on new releases and development progress.
 
 ## 🏢 Sponsors
-
-_No sponsors yet — be the first and add your company ad!_
+*No sponsors yet — [be the first and add your company ad!](https://www.patreon.com/c/firstevertech/membership)*
 
 ## ❤️ Supporters
 
 A huge thank you to all our supporters – your contributions make a real difference.  
-Your name could be here too.
+Your name could be here too. Every bit helps cover development costs and ensures these tools continue to improve.
 
+<!-- SUPPORTERS_START -->
 - Sqania, jadeanemail, westor7, J. A. Dean, Bartechr, tsantaliki, PegHorse
+<!-- SUPPORTERS_END -->
 
 ## ⭐ Stars
-
 If this project helped you, please click the "Star" button at the top of this page on GitHub.
 
-<!-- STAR-GRAPH-START -->
-<!-- stars-graph.yml will auto-commit the chart here. Do not remove this comment block. -->
-<!-- STAR-GRAPH-END -->
+![Star History](assets/stars-graph.svg)
 
 ## 🌐 Community & Distribution
 
 - Official threads on forums:  
-🔗 **TechPowerUp**, **Guru3D**, **WinClub**, **ElevenForum**, **Win-Raid**, **Station-Drivers**
+🔗 **TechPowerUp**, **Guru3D**, **WinClub**, **ElevenForum**, **Win-Raid**, and **Station-Drivers**.
 
 ## 💼 Career Opportunity
 
-**I specialize in Windows deployment, driver automation, hardware compatibility, Microsoft technologies, infrastructure analysis, and custom IT tooling. If your organization faces automation, deployment, device management, or unsupported hardware environments, let's discuss how I can help.**
+> [!TIP]
+> **I specialize in Windows deployment, driver automation, hardware compatibility, Microsoft technologies, infrastructure analysis, and custom IT tooling. If your organization faces automation, deployment, device management, or unsupported hardware environments, let's discuss how I can help.**
+>
+> 🔗 **Business Contact:** [firstever.tech/contact](https://www.firstever.tech/contact)
+> 🔗 **LinkedIn Profile:** [linkedin.com/in/marcin-grygiel](https://linkedin.com/in/marcin-grygiel)
 
-🔗 **Business Contact:** firstever.tech/contact  
-🔗 **LinkedIn Profile:** linkedin.com/in/marcin-grygiel
+---
 
-* * *
-
+<a id="table_of_contents"></a>
 ## 📑 **1. Table of Contents**
 
-1. Table of Contents
-2. Release Highlights  
-   2.1 Latest Version  
-   2.2 Previous Release
-3. Application Overview
-4. Key Features  
-   4.1 Multiple Free Sources  
-   4.2 Background Mode  
-   4.3 Security & Verification  
-   4.4 Customization
-5. System Requirements
-6. Quick Start  
-   6.1 Method 1: Interactive Start Screen  
-   6.2 Method 2: One Random Wallpaper  
-   6.3 Method 3: Background Changer  
-   6.4 Method 4: PowerShell Gallery  
-   6.5 Command-Line Options
-7. How It Works  
-   7.1 Self-Verification & Update Check  
-   7.2 Image Source Selection  
-   7.3 Download & Filter Pipeline  
-   7.4 Wallpaper Application
-8. Security First Approach
-9. Usage Scenarios
-10. Download Options
-11. Project Structure
-12. Release Structure
-13. Frequently Asked Questions (FAQ)
-14. Image Source Comparison
-15. Performance Metrics
-16. Known Issues
-17. Ready to Use?
-18. Contributing
-19. License
-20. Acknowledgments
-21. Important Links
-22. Author & Contact
+1. [**Table of Contents**](#table_of_contents)  
+2. [**Release Highlights**](#release-highlights)  
+   2.1 [Latest Version](#latest-version)  
+   2.2 [Previous Release](#previous-releases)  
+3. [**Application Overview**](#application-overview)  
+4. [**Key Features**](#key-features)  
+   4.1 [Multiple Free Sources](#multiple-free-sources)  
+   4.2 [Background Mode](#background-mode)  
+   4.3 [Security & Verification](#security-verification)  
+   4.4 [Customization](#customization)  
+5. [**System Requirements**](#system-requirements)  
+   5.1 [System Requirements Table](#system-requirements-table)  
+   5.2 [Windows Version Support](#windows-version-support)  
+   5.3 [Legacy System Notes](#legacy-system-notes)  
+6. [**Quick Start**](#quick-start)  
+   6.1 [Method 1: Interactive Start Screen](#method-1-interactive-start-screen)  
+   6.2 [Method 2: One Random Wallpaper](#method-2-one-random-wallpaper)  
+   6.3 [Method 3: Background Changer](#method-3-background-changer)  
+   6.4 [Method 4: PowerShell Gallery](#method-4-powershell-gallery)  
+   6.5 [Command-Line Options](#command-line-options)  
+7. [**How It Works**](#how-it-works)  
+   7.1 [Self-Verification & Update Check](#self-verification-update-check)  
+   7.2 [Image Source Selection](#image-source-selection)  
+   7.3 [Download & Filter Pipeline](#download-filter-pipeline)  
+   7.4 [Wallpaper Application](#wallpaper-application)  
+8. [**Security First Approach**](#security-first-approach)  
+   8.1 [Verified Security Layers](#verified-security-layers)  
+9. [**Usage Scenarios**](#usage-scenarios)  
+   9.1 [Home Users](#home-users)  
+   9.2 [IT Professionals](#it-professionals)  
+   9.3 [System Builders](#system-builders)  
+10. [**Download Options**](#download-options)  
+    10.1 [Option 1: SFX Executable (Recommended)](#option-1-sfx-executable-recommended)  
+    10.2 [Option 2: Direct PS1](#option-2-direct-ps1)  
+    10.3 [Option 3: PowerShell Gallery](#option-3-powershell-gallery)  
+    10.4 [Option 4: Source Code](#option-4-source-code)  
+11. [**Project Structure**](#project-structure)  
+12. [**Release Structure**](#release-structure)  
+    12.1 [Primary Files](#primary-files)  
+    12.2 [Verification Files](#verification-files)  
+    12.3 [Data Files](#data-files)  
+13. [**Frequently Asked Questions (FAQ)**](#frequently-asked-questions-faq)  
+14. [**Image Source Comparison**](#image-source-comparison)  
+15. [**Performance Metrics**](#performance-metrics)  
+    15.1 [Typical Execution Time Breakdown](#typical-execution-times)  
+    15.2 [Disk Space Usage](#disk-space-usage)  
+16. [**Known Issues**](#known-issues)  
+17. [**Ready to Use?**](#ready-to-use)  
+    17.1 [Quick Start Guide](#quick-start-guide)  
+    17.2 [Verification Steps (Optional)](#verification-steps-optional)  
+    17.3 [Need Help?](#need-help)  
+18. [**Contributing**](#contributing)  
+19. [**License**](#license)  
+20. [**Acknowledgments**](#acknowledgments)  
+21. [**Important Links**](#important-links)  
+22. [**Author & Contact**](#author-and-contact)  
 
-↑ Back to top
+[↑ Back to top](#top)
 
-* * *
+---
 
+<a id="release-highlights"></a>
 ## 🎉 **2. Release Highlights**
 
+<a id="latest-version"></a>
 ### 2.1 Latest Version
 
 **v2026.11.0001** → [Release Notes](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer/releases/tag/v2026.11.0001)
 
-### 🆕 Initial Release
+### 🆕 **Initial Release**
+- **One random 4K wallpaper** from free sources that need no API key: Bing, Picsum, Wallhaven (or a random mix of them).
+- **Background mode** with tray icon and start at sign-in — changes the wallpaper every 1–1440 minutes.
+- **Multiple sources**: free services, your own folders (used in place, never copied or deleted), your own image links or `.txt` lists, and optional API-key services (Flickr, Immich, Pexels, Pixabay, Unsplash).
+- **Security**: SHA-256 self-hash verification against GitHub Releases, optional auto-update with hash check.
+- **Dynamic credits**: support links loaded from `data/universal-windows-wallpaper-changer-credits.txt` on GitHub RAW, with an embedded fallback.
+- **API keys** stored encrypted with DPAPI for the current Windows user; environment variables override stored keys.
 
-- **One random 4K wallpaper** from free sources that need no API key: Bing, Picsum, Wallhaven (or a random mix)
-- **Background mode** with tray icon and start at sign-in — changes the wallpaper every 1–1440 minutes
-- **Multiple sources**: free services, your own folders (used in place), your own image links or `.txt` lists, and optional API-key services
-- **Security**: SHA-256 self-hash verification against GitHub Releases, optional auto-update
-- **Dynamic credits**: support links loaded from `data/universal-windows-wallpaper-changer-credits.txt` on GitHub RAW
-- **API keys** stored encrypted with DPAPI for the current Windows user
+---
 
-↑ Back to top
+[↑ Back to top](#top)
 
+<a id="previous-releases"></a>
 ### 2.2 Previous Release
 
 _None — this is the initial release._
 
-↑ Back to top
+[↑ Back to top](#top)
 
+<a id="application-overview"></a>
 ## 🖼️ **3. Application Overview**
 
 | Phase 1 | Phase 2 | Phase 3 | Phase 4 |
-|---------|---------|---------|---------|
-| _Security check & update check_ | _Source selection & image fetch_ | _Filter & verify (size, dimensions)_ | _Apply wallpaper / start tray_ |
+|:---------------:|:--------------:|:-------------------:|:-------------------:|
+| ![Security](assets/1-security.png) | ![Source](assets/2-source.png) | ![Filter](assets/3-filter.png) | ![Apply](assets/4-apply.png) |
+| *Security check and update check* | *Source selection and image fetch* | *Filter and verify (size, dimensions, orientation)* | *Apply wallpaper / start tray* |
 
 > **📸 SCREENSHOT PLACEHOLDER 1:**  
-> Insert here: `docs/screenshots/phase-overview.png` — four-panel graphic showing the console phases.  
-> **Action:** Skel do góry, wstaw obrazek po utworzeniu folderu `docs/screenshots/` w repo.
+> Insert four images into `assets/`: `1-security.png`, `2-source.png`, `3-filter.png`, `4-apply.png` — screenshots of the four console phases.  
+> **Action:** Skel w tej sekcji, wstaw obrazki po utworzeniu folderu `assets/` w repo.
 
-↑ Back to top
+[↑ Back to top](#top)
 
+<a id="key-features"></a>
 ## ✨ **4. Key Features**
 
+<a id="multiple-free-sources"></a>
 ### 🖼️ 4.1 Multiple Free Sources
 
 | Source | API key | Query | Notes |
@@ -158,22 +215,24 @@ _None — this is the initial release._
 | **Pixabay** | Yes | Yes | Free API: max 1280 px |
 | **Unsplash** | Yes | Yes | 50 requests per hour |
 
-### ⚡ 4.2 Background Mode
+If a service supports a query and you give none, a random one of **Nature, Abstract, Minimalist, Anime, Cyberpunk** is used.
 
+<a id="background-mode"></a>
+### ⚡ 4.2 Background Mode
 - Hidden PowerShell process with **tray icon**
-- **Start at sign-in** via `HKCU\...\Run`
+- **Start at sign-in** via `HKCU\Software\Microsoft\Windows\CurrentVersion\Run`
 - Pause / Resume / Change now from tray menu
 - State persisted in `%LOCALAPPDATA%\UniversalWindowsWallpaperChanger\state.json`
 
+<a id="security-verification"></a>
 ### 🛡️ 4.3 Security & Verification
-
 - **SHA-256 self-hash** verified against GitHub Releases on every interactive start
 - **Auto-update** checks `src/universal-windows-wallpaper-changer.ver` on GitHub RAW
 - **DPAPI-encrypted API keys** (never shown, never logged, never accepted on command line)
 - **No admin rights** required — everything runs in HKCU
 
+<a id="customization"></a>
 ### 🎨 4.4 Customization
-
 - Minimum width, minimum pixels, minimum file size filters
 - Orientation: landscape, portrait, squarish
 - Output format (JPG/PNG) and quality for services that convert
@@ -181,84 +240,112 @@ _None — this is the initial release._
 - API keys overridable via environment variables
 
 > **📸 SCREENSHOT PLACEHOLDER 2:**  
-> Insert here: `docs/screenshots/tray-menu.png` — tray icon context menu showing "Current wallpaper", "Pause", "Change now".  
+> Insert here: `assets/tray-menu.png` — tray icon context menu showing "Current wallpaper", "Pause", "Change now".  
 > **Action:** Skel w tej sekcji, wstaw obrazek po zrobieniu screenshota.
 
-↑ Back to top
+[↑ Back to top](#top)
 
+<a id="system-requirements"></a>
 ## 📋 **5. System Requirements**
+
+<a id="system-requirements-table"></a>
+### 5.1 System Requirements Table
 
 | Component | Minimum | Recommended | Notes |
 |-----------|---------|-------------|-------|
-| Windows | 10 1809 (17763) | 11 22H2+ | 1809 requires .NET 4.7.2+ |
-| .NET Framework | 4.7.2 | 4.8+ | Required for TLS 1.2 |
+| Windows Version | 10 1809 (17763) | 11 22H2+ | 1809 requires .NET 4.7.2+ |
+| .NET Framework | 4.7.2 | 4.8+ | Required for TLS 1.2 support |
 | PowerShell | 5.1 | 5.1+ | Windows PowerShell 5.1 included |
 | Administrator | **Not required** | **Not required** | HKCU only |
-| Internet | Required for online sources | Required | For hash verification & updates |
+| Internet | Required for online sources | Required | For hash verification and updates |
 | RAM | 2 GB | 4 GB+ | For image processing |
 | Disk Space | 100 MB | 500 MB+ | Depends on `-Keep` setting |
 
-### Windows Version Support
+<a id="windows-version-support"></a>
+### 5.2 Windows Version Support
 
-| Version | Build | Status |
-|---------|-------|--------|
-| Windows 11 | All builds | ✅ Full |
-| Windows 10 | 22H2+ | ✅ Full |
-| Windows 10 | 21H2 / 21H1 | ✅ Full |
-| Windows 10 | 20H2–1809 | ✅ Full |
-| Windows 10 | LTSB 2016/2015 | ⚠️ Limited (TLS 1.2 manual updates) |
+| Version | Build | Status | Notes |
+|---------|-------|--------|-------|
+| Windows 11 | All builds | ✅ Full | Optimized support |
+| Windows 10 | 22H2+ | ✅ Full | Recommended |
+| Windows 10 | 21H2 | ✅ Full | Stable |
+| Windows 10 | 21H1 (19043) | ✅ Full | Legacy |
+| Windows 10 | 20H2 (19042) | ✅ Full | Legacy |
+| Windows 10 | 2004 (19041) | ✅ Full | Legacy |
+| Windows 10 | 1909 (18363) | ✅ Full | Legacy |
+| Windows 10 | 1903 (18362) | ✅ Full | Legacy |
+| Windows 10 | 1809 (17763) | ✅ Limited | Requires .NET 4.7.2+ for TLS 1.2 support |
+| Windows 10 | LTSB 2016 (1607) | ⚠️ Limited | Manual updates required for TLS 1.2 |
+| Windows 10 | LTSB 2015 (1507) | ⚠️ Limited | Manual updates required for TLS 1.2 |
 
-↑ Back to top
+<a id="legacy-system-notes"></a>
+### 5.3 Legacy System Notes
+- **Windows 10 1809 (17763) and newer**: Full TLS 1.2 support out-of-the-box
+- **Windows 10 LTSB 2015/2016**: May require manual installation of:
+  - [.NET Framework 4.8](https://go.microsoft.com/fwlink/?linkid=2088631)
+  - [KB4474419](https://catalog.update.microsoft.com/Search.aspx?q=KB4474419) (SHA-2 update)
+- **The tool automatically**:
+  - Detects Windows version limitations
+  - Warns about potential connectivity issues
+  - Provides fallback options for offline operation
+- **Local sources** (`Photos`, `Folder`) work even without internet connectivity
 
-## ⚡ **6. Quick Start**
+[↑ Back to top](#top)
 
+<a id="quick-start"></a>
+## 🚦 **6. Quick Start**
+
+<a id="method-1-interactive-start-screen"></a>
 ### 6.1 Method 1: Interactive Start Screen
 
-```powershell
-.\universal-windows-wallpaper-changer.ps1
-```
+    .\universal-windows-wallpaper-changer.ps1
 
 Opens the start screen: wizard or one random 4K wallpaper.
 
+<a id="method-2-one-random-wallpaper"></a>
 ### 6.2 Method 2: One Random Wallpaper
 
-```powershell
-.\universal-windows-wallpaper-changer.ps1 -Once
-```
+    .\universal-windows-wallpaper-changer.ps1 -Once
 
 Sets one random 4K wallpaper from Bing, Picsum, or Wallhaven.
 
+<a id="method-3-background-changer"></a>
 ### 6.3 Method 3: Background Changer
 
-```powershell
-.\universal-windows-wallpaper-changer.ps1 -Source Wallhaven -Query "forest" -IntervalMinutes 30
-```
+    .\universal-windows-wallpaper-changer.ps1 -Source Wallhaven -Query "forest" -IntervalMinutes 30
 
-Changes the wallpaper every 30 minutes in the background with tray icon.
+Changes the wallpaper every 30 minutes in the background with a tray icon.
 
 Check status:
 
-```powershell
-.\universal-windows-wallpaper-changer.ps1 -Background Status
-```
+    .\universal-windows-wallpaper-changer.ps1 -Background Status
 
-Stop and remove settings:
+Pause / Resume / Stop:
 
-```powershell
-.\universal-windows-wallpaper-changer.ps1 -Background Stop
-```
+    .\universal-windows-wallpaper-changer.ps1 -Background Pause
+    .\universal-windows-wallpaper-changer.ps1 -Background Resume
+    .\universal-windows-wallpaper-changer.ps1 -Background Stop
 
+<a id="method-4-powershell-gallery"></a>
 ### 6.4 Method 4: PowerShell Gallery
 
-```powershell
-Install-Script -Name universal-windows-wallpaper-changer
-universal-windows-wallpaper-changer.ps1
-```
+Install from PowerShell Gallery:
+
+    Install-Script -Name universal-windows-wallpaper-changer
+
+Update:
+
+    Update-Script -Name universal-windows-wallpaper-changer
+
+Run:
+
+    universal-windows-wallpaper-changer
 
 > **📸 SCREENSHOT PLACEHOLDER 3:**  
-> Insert here: `docs/screenshots/start-screen.png` — start screen with options [1] Wizard, [2] One random 4K wallpaper.  
+> Insert here: `assets/start-screen.png` — start screen with options [1] Wizard, [2] One random 4K wallpaper, etc.  
 > **Action:** Skel w tej sekcji, wstaw obrazek po zrobieniu screenshota.
 
+<a id="command-line-options"></a>
 ### 6.5 Command-Line Options
 
 | Option | Description |
@@ -295,22 +382,26 @@ universal-windows-wallpaper-changer.ps1
 | `-skipverify`, `-s` | Skip self-hash verification |
 | `-debug`, `-d` | Print diagnostic messages |
 
-↑ Back to top
+[↑ Back to top](#top)
 
+<a id="how-it-works"></a>
 ## 🔧 **7. How It Works**
 
+<a id="self-verification-update-check"></a>
 ### 🔒 7.1 Self-Verification & Update Check
 
 - **Integrity Verification** — Validates script SHA-256 against GitHub Release
 - **Update Detection** — Compares current version with `src/universal-windows-wallpaper-changer.ver`
 - **PSGallery Path** — If installed via `Install-Script`, updates go through `Update-Script`
 
+<a id="image-source-selection"></a>
 ### 🖼️ 7.2 Image Source Selection
 
 - `Random` picks Bing, Picsum, and Wallhaven in random order
 - Local sources (`Photos`, `Folder`) scan files in place — never copy or delete
 - `URL` accepts a single link or a `.txt` list (local file or remote link)
 
+<a id="download-filter-pipeline"></a>
 ### 📊 7.3 Download & Filter Pipeline
 
 - Metadata pre-filter (width, height, orientation) before download
@@ -318,6 +409,7 @@ universal-windows-wallpaper-changer.ps1
 - File type detected from magic bytes (not extension)
 - Accepted files renamed to `<provider>_img_<date>_<N>.<ext>`
 
+<a id="wallpaper-application"></a>
 ### ⚡ 7.4 Wallpaper Application
 
 - `SystemParametersInfo` with `SPI_SETDESKWALLPAPER`
@@ -325,130 +417,164 @@ universal-windows-wallpaper-changer.ps1
 - Attribution logged to `%LOCALAPPDATA%\...\attribution.log`
 - Old files cleaned up according to `-Keep`
 
-↑ Back to top
+[↑ Back to top](#top)
 
+<a id="security-first-approach"></a>
 ## 🛡 **8. Security First Approach**
 
+<a id="verified-security-layers"></a>
 ### 🔒 8.1 Verified Security Layers
 
-```
-1. Self-Integrity   → Script Hash Verification against GitHub Releases
-2. API Key Safety   → DPAPI encryption (current Windows user), never logged
-3. Command Line     → Keys never accepted on the command line
-4. Log Safety       → Secrets masked with Hide-Secret
-5. Update Safety    → Version verification before download
-6. PSGallery        → Verified by PowerShellGet (self-check skipped)
-```
+    1. Self-Integrity   → Script Hash Verification against GitHub Releases
+    2. API Key Safety   → DPAPI encryption (current Windows user), never logged
+    3. Command Line     → Keys never accepted on the command line
+    4. Log Safety       → Secrets masked with Hide-Secret
+    5. Update Safety    → Version verification before download
+    6. PSGallery        → Verified by PowerShellGet (self-check skipped)
 
 ### 🏷️ 8.2 Why is the certificate "not trusted"?
 
-The FirstEver.tech certificate is self-signed. The PowerShell script is the authoritative source. Its SHA-256 hash is published on GitHub and verified automatically on every run. The SFX executable is a convenience wrapper — its contents are the same verified PS1.
+The FirstEver.tech certificate is self-signed. The PowerShell script (`universal-windows-wallpaper-changer.ps1`) is the authoritative source of the tool. Its SHA-256 hash is published on GitHub and verified automatically on every run. The SFX executable is a convenience wrapper — its contents are the same verified PS1.
 
-### 🛡 8.3 Why does VirusTotal show detections for the SFX executable?
+### 🛡️ 8.3 Why does VirusTotal show detections for the SFX executable?
 
-_Once the SFX is released:_ The SFX package may show a small number of detections — known false positives from SFX+PowerShell combinations. The PS1 script itself scores clean.
+_Once the SFX is released:_ The SFX package may show a small number of detections — known false positives from SFX+PowerShell combinations. The PS1 script itself scores clean. Always verify the PS1 hash published in the Release.
 
 > **📸 SCREENSHOT PLACEHOLDER 4:**  
-> Insert here: `docs/screenshots/virustotal-ps1.png` — VirusTotal scan of the PS1 showing 0 detections.  
+> Insert here: `assets/virustotal-ps1.png` — VirusTotal scan of the PS1 showing 0 detections.  
 > **Action:** Skel w tej sekcji, wstaw obrazek po zrobieniu screenshota.
 
-↑ Back to top
+[↑ Back to top](#top)
 
+<a id="usage-scenarios"></a>
 ## 🎯 **9. Usage Scenarios**
 
+<a id="home-users"></a>
 ### 🏠 9.1 Home Users
 
 - **Fresh wallpaper daily** without third-party apps
 - **No API keys** for default sources
 - **One-click operation** via wizard
 
+<a id="it-professionals"></a>
 ### 💼 9.2 IT Professionals
 
 - **Silent deployment** via `-quiet`
 - **Per-user** — no admin rights, runs in HKCU
 - **Profile-based** — save settings with `-wizard`, deploy with `-Profile`
 
-### 🛠️ 9.3 System Builders
+<a id="system-builders"></a>
+### 🛠 9.3 System Builders
 
 - **Pre-configured profiles** for customer machines
 - **Folder source** — use curated wallpapers without downloading
 - **Background mode** — set once, runs at sign-in
 
-↑ Back to top
+[↑ Back to top](#top)
 
+<a id="download-options"></a>
 ## 📥 **10. Download Options**
 
+<a id="option-1-sfx-executable-recommended"></a>
 ### 10.1 Option 1: SFX Executable (Recommended)
 
-- **File:** `Universal-Windows-Wallpaper-Changer-202x.xx.xxxx.exe`
-- **Features:** One-click execution, automatic extraction
-- **For:** Most users, easiest method
+- **File**: [`Universal-Windows-Wallpaper-Changer-202x.xx.xxxx.exe`](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer/releases)
+- **Features**: One-click execution, automatic extraction
+- **Security**: Self-verifying SHA-256 hash check on every run
+- **For**: Most users, easiest method
 
+<a id="option-2-direct-ps1"></a>
 ### 10.2 Option 2: Direct PS1
 
-Download `universal-windows-wallpaper-changer.ps1` and run:
+- **File**: [`universal-windows-wallpaper-changer.ps1`](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer/blob/main/src/universal-windows-wallpaper-changer.ps1)
+- **Features**: Full control, modifiable code, transparency
+- **Security**: Self-verifying SHA-256 hash check on every run
+- **For**: Advanced users, administrators, customization
 
-```powershell
-powershell -ExecutionPolicy Bypass -File .\universal-windows-wallpaper-changer.ps1
-```
+    powershell -ExecutionPolicy Bypass -File .\universal-windows-wallpaper-changer.ps1
 
+<a id="option-3-powershell-gallery"></a>
 ### 10.3 Option 3: PowerShell Gallery
 
-```powershell
-Install-Script -Name universal-windows-wallpaper-changer
-```
+- **Method**: [`Install-Script universal-windows-wallpaper-changer`](https://www.powershellgallery.com/packages/universal-windows-wallpaper-changer) - PowerShell command
+- **Features**: Versioned distribution via PSGallery, one-line install/update (`Update-Script`)
+- **Security**: Self-verifying SHA-256 hash check on every run
+- **For**: Advanced users, administrators
 
+<a id="option-4-source-code"></a>
 ### 10.4 Option 4: Source Code
 
-Clone the repository and run from `src/`.
+- **Method**: `git clone` the repository
+- **Features**: Latest development version, full customization
+- **For**: Developers, contributors
 
-↑ Back to top
+[↑ Back to top](#top)
 
+<a id="project-structure"></a>
 ## 📁 **11. Project Structure**
 
-```
-Universal-Windows-Wallpaper-Changer/
-├── README.md
-├── LICENSE
-├── .gitignore
-├── universal-windows-wallpaper-changer.ps1     # Main script (dev)
-├── src/
-│   ├── universal-windows-wallpaper-changer.ps1 # Auto-update copy (optional)
-│   └── universal-windows-wallpaper-changer.ver # Version string
-└── data/
-    ├── universal-windows-wallpaper-changer-credits.txt
-    └── universal-windows-wallpaper-changer-ads.txt
-```
+**Key Files and Directories:**
 
-**Note:** The `src/` copy is optional. The main script is in the repository root. The `.ver` file is always read from `src/` on GitHub RAW.
+`src/` - Main scripts directory
+- [universal-windows-wallpaper-changer.ps1](src/universal-windows-wallpaper-changer.ps1) - Main PowerShell script
+- [universal-windows-wallpaper-changer.ver](src/universal-windows-wallpaper-changer.ver) - Main Version file
 
-↑ Back to top
+`data/` - Data files
+- [universal-windows-wallpaper-changer-credits.txt](data/universal-windows-wallpaper-changer-credits.txt) - Dynamic credits screen displayed at the end of the script (loaded from GitHub at runtime)
+- [universal-windows-wallpaper-changer-ads.txt](data/universal-windows-wallpaper-changer-ads.txt) - Promotional links (keys A–E)
 
+`assets/` - Screenshots and branding
+- [Universal-Windows-Wallpaper-Changer.png](assets/Universal-Windows-Wallpaper-Changer.png) - Project banner
+- [stars-graph.svg](assets/stars-graph.svg) - Star history chart (auto-generated)
+- [1-security.png](assets/1-security.png) - Security screen (1 of 4)
+- [2-source.png](assets/2-source.png) - Source selection screen (2 of 4)
+- [3-filter.png](assets/3-filter.png) - Filter screen (3 of 4)
+- [4-apply.png](assets/4-apply.png) - Apply wallpaper screen (4 of 4)
+
+`ISSUE_TEMPLATE/` - Issue templates
+- [bug_report.md](ISSUE_TEMPLATE/bug_report.md) - Bug report template
+- [config.yml](ISSUE_TEMPLATE/config.yml) - Issue templates configuration file
+
+`/` - Root directory files
+- [CHANGELOG.md](CHANGELOG.md) - Project changelog
+- [CONTRIBUTING.md](CONTRIBUTING.md) - Contribution guidelines
+- [KNOWN_ISSUES.md](KNOWN_ISSUES.md) - Known issues and workarounds
+- [LICENSE](LICENSE) - MIT License
+- [PULL_REQUEST_TEMPLATE.md](PULL_REQUEST_TEMPLATE.md) - Pull request template
+- [README.md](README.md) - Main project documentation
+- [SECURITY.md](SECURITY.md) - Security policy
+
+[↑ Back to top](#top)
+
+<a id="release-structure"></a>
 ## 📦 **12. Release Structure**
 
+Each version (v202x.xx.xxxx) includes:
+
+<a id="primary-files"></a>
 ### 12.1 Primary Files
 
-| File | Purpose |
-|------|---------|
-| `Universal-Windows-Wallpaper-Changer-<version>.exe` | SFX self-extracting package |
-| `universal-windows-wallpaper-changer.ps1` | Main script (for direct PS1 users) |
+- `Universal-Windows-Wallpaper-Changer-202x.xx.xxxx.exe` - Main executable (SFX package)
+- `universal-windows-wallpaper-changer.ps1` - PowerShell script (inside the SFX and attached separately for direct use)
 
+<a id="verification-files"></a>
 ### 12.2 Verification Files
 
-| File | Purpose |
-|------|---------|
-| `universal-windows-wallpaper-changer-<version>-ps1.sha256` | SHA-256 hash of the PS1 script (for self-check) |
+- `Universal-Windows-Wallpaper-Changer-202x.xx.xxxx.sha256` - EXE hash
+- `universal-windows-wallpaper-changer-202x.xx.xxxx-ps1.sha256` - PS1 script hash (used by self-check)
 
+<a id="data-files"></a>
 ### 12.3 Data Files (loaded from `main` branch, not Release)
 
-| File | Purpose |
-|------|---------|
-| `src/universal-windows-wallpaper-changer.ver` | Latest version string for auto-update |
-| `data/universal-windows-wallpaper-changer-credits.txt` | Credits screen content |
-| `data/universal-windows-wallpaper-changer-ads.txt` | Promotional links (keys A–E) |
+- `src/universal-windows-wallpaper-changer.ver` - Latest version string for auto-update
+- `data/universal-windows-wallpaper-changer-credits.txt` - Credits screen content
+- `data/universal-windows-wallpaper-changer-ads.txt` - Promotional links (keys A–E)
 
-↑ Back to top
+These are fetched with a cache-buster, so updates are visible immediately after commit to `main`.
 
+[↑ Back to top](#top)
+
+<a id="frequently-asked-questions-faq"></a>
 ## ❓ **13. Frequently Asked Questions (FAQ)**
 
 ### 🤔 13.1 Is this tool safe to use?
@@ -500,8 +626,9 @@ _Once released:_ Known false positives from SFX + PowerShell execution. The PS1 
 
 Yes, but wallpaper changing is per-user. On Server Core (no desktop), it has no visible effect.
 
-↑ Back to top
+[↑ Back to top](#top)
 
+<a id="image-source-comparison"></a>
 ## 🖼️ **14. Image Source Comparison**
 
 | Feature | Bing | Picsum | Wallhaven | Photos/Folder | API-key services |
@@ -514,35 +641,48 @@ Yes, but wallpaper changing is per-user. On Server Core (no desktop), it has no 
 | **Rate limit** | None | None | Higher with key | None | Varies |
 | **Experimental** | No | No | No | No | Flickr, Immich |
 
-↑ Back to top
+[↑ Back to top](#top)
 
+<a id="performance-metrics"></a>
 ## 📊 **15. Performance Metrics**
 
+<a id="typical-execution-times"></a>
 ### 15.1 Typical Execution Time Breakdown
 
-| Phase | Time | Description |
-|-------|------|-------------|
-| Compatibility Pre-Check | 5–10 s | OS build, .NET, TLS 1.2, GitHub connectivity |
-| Verification & Update Check | 5–10 s | Self-hash + version check |
-| Image Fetch & Download | 2–15 s | Depends on source and image size |
-| Filter & Verify | 1–3 s | System.Drawing dimension check |
-| Wallpaper Apply | < 1 s | SystemParametersInfo |
+| **Phase** | **Time** | **Description** |
+|----------|----------|-----------------|
+| Compatibility Pre-Check | 5–10 seconds | OS build, .NET Framework, TLS 1.2 availability, GitHub connectivity verification |
+| Verification & Update Check | 5–10 seconds | Self-integrity hash verification and updater version check |
+| Image Fetch & Download | 2–15 seconds | Depends on source and image size |
+| Filter & Verify | 1–3 seconds | System.Drawing dimension and orientation check |
+| Wallpaper Apply | < 1 second | SystemParametersInfo call |
 
-> **Note:** Times measured on typical SSD systems with broadband internet.
+> **Note:** Times above are measured on typical SSD-equipped systems with a standard broadband connection. On slower HDD systems or limited internet connections, individual phases (especially image download) may take significantly longer.
 
+<a id="disk-space-usage"></a>
 ### 15.2 Disk Space Usage
 
-| Component | Typical Size |
-|-----------|-------------|
-| Script | ~100 KB |
-| Log file | < 512 KB (auto-trimmed) |
-| Downloaded wallpapers | 2–10 MB each × `-Keep` count |
-| State & queue files | < 1 MB |
+| **Stage** | **Estimated Usage** | **Notes** |
+|----------|---------------------|-----------|
+| Script | ~100 KB | Single PS1 file |
+| Log file | < 512 KB | Auto-trimmed at 512 KB |
+| Downloaded wallpapers | 2–10 MB each | Depends on source resolution |
+| State & queue files | < 1 MB | JSON and CliXML |
+| **Persistent disk usage** | **Depends on `-Keep`** | 20 images ≈ 40–200 MB |
 
-↑ Back to top
+**Important notes:**
+- The current wallpaper is never deleted, even if `-Keep` is exceeded.
+- With `-Keep 0`, nothing is deleted automatically.
+- With `-KeepCurrentOnly`, only the current wallpaper is kept.
 
-## ⚠️ **16. Known Issues**
+[↑ Back to top](#top)
 
+<a id="known-issues"></a>
+## 🐛 **16. Known Issues**
+
+For current limitations and workarounds, please see: [KNOWN_ISSUES.md](KNOWN_ISSUES.md)
+
+**Summary of known limitations:**
 - **Bing images** are copyrighted and meant for personal use
 - **Flickr and Immich** support is **experimental** — not verified against live accounts/servers
 - **Pixabay** free API delivers at most **1280 px** regardless of `-MinWidth`
@@ -550,74 +690,99 @@ Yes, but wallpaper changing is per-user. On Server Core (no desktop), it has no 
 - **Background mode** runs for the current user only (per-user registry HKCU)
 - **Windows 10 LTSB 2015/2016** may need manual TLS 1.2 updates
 
-↑ Back to top
+[↑ Back to top](#top)
 
+<a id="ready-to-use"></a>
 ## 🚀 **17. Ready to Use?**
 
-### Quick Start Guide
+<a id="quick-start-guide"></a>
+### 17.1 Quick Start Guide
 
-```powershell
-# One random 4K wallpaper
-.\universal-windows-wallpaper-changer.ps1 -Once
+1. **Download** latest release from [Releases page](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer/releases)
+2. **Verify** SHA-256 hashes (optional but recommended)
+3. **Run** the tool — no administrator rights required
+4. **Follow prompts** — the wizard handles everything automatically
+5. **Enjoy** your new wallpaper
 
-# Background changer every 30 minutes
-.\universal-windows-wallpaper-changer.ps1 -Source Wallhaven -Query "forest" -IntervalMinutes 30
-```
+<a id="verification-steps-optional"></a>
+### 17.2 Verification Steps (Optional)
 
-### Verification Steps (Optional)
+- Check file hashes match published SHA256 files
+- Review the [Security First Approach](#8-security-first-approach) section
 
-1. Download the `.sha256` file from the Release
-2. Run: `Get-FileHash .\universal-windows-wallpaper-changer.ps1 -Algorithm SHA256`
-3. Compare with the published hash
+<a id="need-help"></a>
+### 17.3 Need Help?
 
-### Need Help?
+- 📚 [Full Documentation](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer/tree/main/docs)
+- 🐛 [Report Issues](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer/issues)
+- 💬 [Community Discussions](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer/discussions)
+- 🔧 [Troubleshooting Guide](KNOWN_ISSUES.md)
 
-- Check the [FAQ](#-13-frequently-asked-questions-faq)
-- Open an [Issue](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer/issues)
+[↑ Back to top](#top)
 
-↑ Back to top
-
+<a id="contributing"></a>
 ## 🤝 **18. Contributing**
 
-Contributions are welcome:
-- **Bug reports** — include log file excerpts
-- **Feature requests** — describe the use case
-- **Provider integrations** — new free image sources
+We welcome contributions! Please feel free to submit pull requests, report bugs, or suggest new features.
+
+**Areas for Contribution:**
+- Additional free image source integrations
+- Translation improvements
+- Documentation enhancements
+- Testing on various Windows versions
 
 Please open an Issue before submitting a PR.
 
-↑ Back to top
+[↑ Back to top](#top)
 
+<a id="license"></a>
 ## 📄 **19. License**
 
-MIT License. See [LICENSE](LICENSE) for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-↑ Back to top
+[↑ Back to top](#top)
 
+<a id="acknowledgments"></a>
 ## 🙏 **20. Acknowledgments**
 
 - **Bing**, **Picsum**, **Wallhaven** for free image APIs
 - **Flickr**, **Immich**, **Pexels**, **Pixabay**, **Unsplash** for optional provider APIs
-- The open-source PowerShell community
+- AI audits
+- Open source community for continuous improvement
+- Beta testers for real-world validation
 
-↑ Back to top
+[↑ Back to top](#top)
 
+<a id="important-links"></a>
 ## 🔗 **21. Important Links**
 
-- **Repository:** [github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer)
-- **Releases:** [github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer/releases](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer/releases)
-- **Issues:** [github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer/issues](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer/issues)
-- **PowerShell Gallery:** [universal-windows-wallpaper-changer](https://www.powershellgallery.com/packages/universal-windows-wallpaper-changer)
+- [Releases](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer/releases) - Download latest version
+- [Issue Tracker](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer/issues) - Report problems
+- [PowerShell Gallery](https://www.powershellgallery.com/packages/universal-windows-wallpaper-changer) - Install via PSGallery
+- [Security Policy](SECURITY.md) - Security policy
+- [Known Issues](KNOWN_ISSUES.md) - Known issues and workarounds
 
+[↑ Back to top](#top)
 
-↑ Back to top
+<a id="author-and-contact"></a>
+## 🧑‍💻 **22. Author & Contact**
 
-## 👤 **22. Author & Contact**
+<a href="https://www.firstever.tech">
+  <img width="600" alt="" title="FirstEver.tech"
+       src="assets/FirstEverTech-animation.gif" />
+</a>
 
-**Marcin Grygiel / FirstEver.tech**
+<img width="600" alt="Author Photo" title="Marcin Grygiel aka FirstEver and AI" src="https://github.com/user-attachments/assets/452c8553-5059-47c6-9ff9-d73443bb6c06" />
 
-- **GitHub:** [github.com/FirstEverTech](https://github.com/FirstEverTech)
-- **Business Contact:** [firstever.tech/contact](https://firstever.tech/contact)
-- **LinkedIn:** [linkedin.com/in/marcin-grygiel](https://linkedin.com/in/marcin-grygiel)
+### **Marcin Grygiel** aka FirstEver
 
-↑ Back to top
+- 🌐 **Website**: [www.firstever.tech](https://www.firstever.tech)
+- 💼 **LinkedIn**: [Marcin Grygiel](https://www.linkedin.com/in/marcin-grygiel/)
+- 🔧 **GitHub**: [FirstEverTech](https://github.com/FirstEverTech)
+- 📧 **Contact**: [Contact Form](https://www.firstever.tech/contact)
+
+---
+
+**Note**: This tool is provided as-is for convenience purposes. Always respect the license of every image you keep. Bing images are copyrighted and meant for personal use.
+
+[↑ Back to top](#top)
