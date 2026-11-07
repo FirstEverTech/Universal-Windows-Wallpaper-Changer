@@ -38,7 +38,7 @@
 [Cyan] ==============
 
 [Green] - Works with Windows 10 and Windows 11
-[Green] - Free image sources that need no API key (Bing, Picsum, Wallhaven)
+[Green] - Free image sources, no API key (FirstEverTech, Bing, Picsum, Wallhaven)
 [Green] - Optional API keys for Flickr, Immich, Pexels, Pixabay, Unsplash
 [Green] - Background mode with tray icon and start at sign-in
 [Green] - Open-source and free to use
