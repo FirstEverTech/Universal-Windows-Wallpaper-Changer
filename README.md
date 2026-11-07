@@ -38,7 +38,7 @@ Windows has no built-in way to rotate wallpapers from multiple free sources with
 
 ---
 
-[![Sources](https://img.shields.io/badge/Sources-11-blue?style=flat-square)](#41-multiple-free-sources)[![Free Without Key](https://img.shields.io/badge/No_API_Key-Bing_%7C_Picsum_%7C_Wallhaven-blue?style=flat-square)](#41-multiple-free-sources)[![Background Mode](https://img.shields.io/badge/Background-Tray_%2B_Sign--in-blue?style=flat-square)](#42-background-mode)[![Self-Hash](https://img.shields.io/badge/Self--Hash-SHA256-blue?style=flat-square)](#81-verified-security-layers)[![Admin Rights](https://img.shields.io/badge/Admin_Rights-Not_Required-blue?style=flat-square)](#5-system-requirements)
+[![Sources](https://img.shields.io/badge/Sources-12-blue?style=flat-square)](#41-multiple-free-sources)[![Free Without Key](https://img.shields.io/badge/No_API_Key-FirstEverTech_%7C_Bing_%7C_Picsum_%7C_Wallhaven-blue?style=flat-square)](#41-multiple-free-sources)[![Background Mode](https://img.shields.io/badge/Background-Tray_%2B_Sign--in-blue?style=flat-square)](#42-background-mode)[![Self-Hash](https://img.shields.io/badge/Self--Hash-SHA256-blue?style=flat-square)](#81-verified-security-layers)[![Admin Rights](https://img.shields.io/badge/Admin_Rights-Not_Required-blue?style=flat-square)](#5-system-requirements)
 
 For detailed documentation and guides, see:  
 → **[How the image filter pipeline works](#73-download--filter-pipeline)**  
@@ -163,10 +163,11 @@ If this project helped you, please click the "Star" button at the top of this pa
 **v2026.11.0001** → [Release Notes](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer/releases/tag/v2026.11.0001)
 
 ### 🆕 **Initial Release**
-- **One random 4K wallpaper** from free sources that need no API key: Bing, Picsum, Wallhaven (or a random mix of them).
+- **One random 4K wallpaper** from free sources that need no API key: FirstEverTech, Bing, Picsum, Wallhaven (or a random mix of them).
+- **FirstEverTech source**: the author's own 4K photos, published in the `wallpapers` release, filterable by tags (`nature`, `wood`, `city`, ...).
 - **Background mode** with tray icon and start at sign-in — changes the wallpaper every 1–1440 minutes.
 - **Multiple sources**: free services, your own folders (used in place, never copied or deleted), your own image links or `.txt` lists, and optional API-key services (Flickr, Immich, Pexels, Pixabay, Unsplash).
-- **Security**: SHA-256 self-hash verification against GitHub Releases, optional auto-update with hash check.
+- **Security**: SHA-256 self-hash verification against GitHub Releases, one-click update from the SFX package (or PowerShell Gallery) with hash check.
 - **Dynamic credits**: support links loaded from `data/universal-windows-wallpaper-changer-credits.txt` on GitHub RAW, with an embedded fallback.
 - **API keys** stored encrypted with DPAPI for the current Windows user; environment variables override stored keys.
 
@@ -203,6 +204,7 @@ _None — this is the initial release._
 
 | Source | API key | Query | Notes |
 |--------|---------|-------|-------|
+| **FirstEverTech** | No | Yes (tags) | Author's own 4K photos (PNG), default source in the wizard |
 | **Bing** | No | No | Landscape only, max 3840 px |
 | **Picsum** | No | No | Random photos, server-side crop available |
 | **Wallhaven** | Optional | Yes | SFW only, higher rate limits with a key |
@@ -215,7 +217,15 @@ _None — this is the initial release._
 | **Pixabay** | Yes | Yes | Free API: max 1280 px |
 | **Unsplash** | Yes | Yes | 50 requests per hour |
 
-If a service supports a query and you give none, a random one of **Nature, Abstract, Minimalist, Anime, Cyberpunk** is used.
+If a service supports a query and you give none, a random one of **Nature, Abstract, Minimalist, Anime, Cyberpunk** is used. `FirstEverTech` is the exception: no query means any photo from the collection.
+
+#### FirstEverTech photos
+
+The photos are attached to the GitHub release tagged `wallpapers`, together with `wallpapers.json` (the list of photos with sizes and tags). File names follow `FirstEverTech_<tag>_<tag>_<tag>_<NNN>.png` (1-3 tags), e.g. `FirstEverTech_nature_wood_forest_001.png`. A query is a list of tags; every word must match a tag of the photo:
+
+    .\universal-windows-wallpaper-changer.ps1 -Source FirstEverTech -Query "nature forest" -Once
+
+The photos are the author's own work. The list is cached locally and refreshed on use.
 
 <a id="background-mode"></a>
 ### ⚡ 4.2 Background Mode
@@ -227,7 +237,7 @@ If a service supports a query and you give none, a random one of **Nature, Abstr
 <a id="security-verification"></a>
 ### 🛡️ 4.3 Security & Verification
 - **SHA-256 self-hash** verified against GitHub Releases on every interactive start
-- **Auto-update** checks `src/universal-windows-wallpaper-changer.ver` on GitHub RAW
+- **Auto-update** checks `src/universal-windows-wallpaper-changer.ver` on GitHub RAW; the new version is installed from the SFX package (or PowerShell Gallery) and verified by SHA-256
 - **DPAPI-encrypted API keys** (never shown, never logged, never accepted on command line)
 - **No admin rights** required — everything runs in HKCU
 
@@ -307,7 +317,7 @@ Opens the start screen: wizard or one random 4K wallpaper.
 
     .\universal-windows-wallpaper-changer.ps1 -Once
 
-Sets one random 4K wallpaper from Bing, Picsum, or Wallhaven.
+Sets one random 4K wallpaper from FirstEverTech, Bing, Picsum, or Wallhaven.
 
 <a id="method-3-background-changer"></a>
 ### 6.3 Method 3: Background Changer
@@ -353,7 +363,7 @@ Run:
 | `-help`, `-?` | Display help and exit |
 | `-version`, `-v` | Display version and exit |
 | `-wizard` | Step-by-step setup wizard |
-| `-source <name>` | Image source (Random, Bing, Picsum, Wallhaven, Photos, Folder, Flickr, Immich, Pexels, Pixabay, Unsplash, URL) |
+| `-source <name>` | Image source (Random, FirstEverTech, Bing, Picsum, Wallhaven, Photos, Folder, Flickr, Immich, Pexels, Pixabay, Unsplash, URL) |
 | `-query <text>` | Search phrase, e.g. "nature winter" |
 | `-folder <path>` | Folder for `-Source Folder` |
 | `-url <link\|file>` | Image link, or `.txt` list |
@@ -392,12 +402,13 @@ Run:
 
 - **Integrity Verification** — Validates script SHA-256 against GitHub Release
 - **Update Detection** — Compares current version with `src/universal-windows-wallpaper-changer.ver`
+- **Update from the SFX package** — the new `WindowsWallpaperChanger-<version>-Win10-Win11.exe` is downloaded from the release, its SHA-256 is checked, it is run silently and the installed script is verified again; the previous copy is restored if anything fails. If the package is unavailable, the `.ps1` asset of the release is used instead (also hash-checked)
 - **PSGallery Path** — If installed via `Install-Script`, updates go through `Update-Script`
 
 <a id="image-source-selection"></a>
 ### 🖼️ 7.2 Image Source Selection
 
-- `Random` picks Bing, Picsum, and Wallhaven in random order
+- `Random` picks FirstEverTech, Bing, Picsum, and Wallhaven in random order
 - Local sources (`Photos`, `Folder`) scan files in place — never copy or delete
 - `URL` accepts a single link or a `.txt` list (local file or remote link)
 
@@ -434,11 +445,11 @@ Run:
 
 ### 🏷️ 8.2 Why is the certificate "not trusted"?
 
-The FirstEver.tech certificate is self-signed. The PowerShell script (`universal-windows-wallpaper-changer.ps1`) is the authoritative source of the tool. Its SHA-256 hash is published on GitHub and verified automatically on every run. The SFX executable is a convenience wrapper — its contents are the same verified PS1.
+The FirstEver.tech certificate is self-signed. The PowerShell script (`universal-windows-wallpaper-changer.ps1`) is the authoritative source of the tool. Its SHA-256 hash is published on GitHub and verified automatically on every run. The SFX executable is a convenience wrapper — it installs the same PS1, whose hash is verified on every run.
 
 ### 🛡️ 8.3 Why does VirusTotal show detections for the SFX executable?
 
-_Once the SFX is released:_ The SFX package may show a small number of detections — known false positives from SFX+PowerShell combinations. The PS1 script itself scores clean. Always verify the PS1 hash published in the Release.
+_Once the SFX is released:_ The SFX package may show a small number of detections — known false positives from SFX+PowerShell combinations. The PS1 script itself scores clean. Always verify the hashes published in the Release.
 
 > **📸 SCREENSHOT PLACEHOLDER 4:**  
 > Insert here: `assets/virustotal-ps1.png` — VirusTotal scan of the PS1 showing 0 detections.  
@@ -478,8 +489,8 @@ _Once the SFX is released:_ The SFX package may show a small number of detection
 <a id="option-1-sfx-executable-recommended"></a>
 ### 10.1 Option 1: SFX Executable (Recommended)
 
-- **File**: [`Universal-Windows-Wallpaper-Changer-202x.xx.xxxx.exe`](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer/releases)
-- **Features**: One-click execution, automatic extraction
+- **File**: [`WindowsWallpaperChanger-<version>-Win10-Win11.exe`](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer/releases)
+- **Features**: One-click install and start, installs the script to a fixed per-user folder, also used by the built-in updater
 - **Security**: Self-verifying SHA-256 hash check on every run
 - **For**: Most users, easiest method
 
@@ -554,13 +565,13 @@ Each version (v202x.xx.xxxx) includes:
 <a id="primary-files"></a>
 ### 12.1 Primary Files
 
-- `Universal-Windows-Wallpaper-Changer-202x.xx.xxxx.exe` - Main executable (SFX package)
+- `WindowsWallpaperChanger-202x.xx.xxxx-Win10-Win11.exe` - Main executable (SFX package, also used for updates)
 - `universal-windows-wallpaper-changer.ps1` - PowerShell script (inside the SFX and attached separately for direct use)
 
 <a id="verification-files"></a>
 ### 12.2 Verification Files
 
-- `Universal-Windows-Wallpaper-Changer-202x.xx.xxxx.sha256` - EXE hash
+- `WindowsWallpaperChanger-202x.xx.xxxx-Win10-Win11.sha256` - EXE hash
 - `universal-windows-wallpaper-changer-202x.xx.xxxx-ps1.sha256` - PS1 script hash (used by self-check)
 
 <a id="data-files"></a>
@@ -571,6 +582,8 @@ Each version (v202x.xx.xxxx) includes:
 - `data/universal-windows-wallpaper-changer-ads.txt` - Promotional links (keys A–E)
 
 These are fetched with a cache-buster, so updates are visible immediately after commit to `main`.
+
+**Photo release (separate):** the release tagged `wallpapers` is not a version release. It holds the FirstEverTech photos and `wallpapers.json` and must not be marked as *Latest*.
 
 [↑ Back to top](#top)
 
@@ -587,7 +600,7 @@ Yes. The tool:
 
 ### 🔄 13.2 Do I need an API key?
 
-No, for the default sources: **Bing, Picsum, Wallhaven** work without a key. Wallhaven has higher rate limits with a free key.
+No, for the default sources: **FirstEverTech, Bing, Picsum, Wallhaven** work without a key. Wallhaven has higher rate limits with a free key.
 
 ### 🖼️ 13.3 Where are wallpapers saved?
 
@@ -600,11 +613,11 @@ Yes. Bing images are copyrighted and meant for personal use. The tool does not c
 
 ### 🔧 13.5 What if a download fails?
 
-The tool tries up to `-MaxAttempts` images (default 5). If all fail, it reports the reasons. For `Random`, it falls back through Bing → Picsum → Wallhaven.
+The tool tries up to `-MaxAttempts` images (default 5). If all fail, it reports the reasons. For `Random`, it falls back through the other free sources (FirstEverTech, Bing, Picsum, Wallhaven).
 
 ### 🔄 13.6 How does the automatic update check work?
 
-The tool compares `$ScriptVersion` with `src/universal-windows-wallpaper-changer.ver` on GitHub RAW. If a newer version exists, it offers to download it (with SHA-256 verification).
+The tool compares `$ScriptVersion` with `src/universal-windows-wallpaper-changer.ver` on GitHub RAW. If a newer version exists, it downloads the SFX package of that release, verifies its SHA-256, installs it and restarts (PowerShell Gallery installs use `Update-Script`).
 
 ### 🔒 13.7 What does self-hash verification do?
 
@@ -631,15 +644,15 @@ Yes, but wallpaper changing is per-user. On Server Core (no desktop), it has no 
 <a id="image-source-comparison"></a>
 ## 🖼️ **14. Image Source Comparison**
 
-| Feature | Bing | Picsum | Wallhaven | Photos/Folder | API-key services |
-|---------|------|--------|-----------|---------------|------------------|
-| **API key** | No | No | Optional | No | Yes |
-| **Query** | No | No | Yes | No | Yes |
-| **4K native** | Yes (UHD) | Yes (server crop) | Yes (filter) | Depends | Varies |
-| **Orientation filter** | Landscape only | Yes (server) | Yes | Local scan | Yes |
-| **Used in place** | No | No | No | Yes | No |
-| **Rate limit** | None | None | Higher with key | None | Varies |
-| **Experimental** | No | No | No | No | Flickr, Immich |
+| Feature | FirstEverTech | Bing | Picsum | Wallhaven | Photos/Folder | API-key services |
+|---------|---------------|------|--------|-----------|---------------|------------------|
+| **API key** | No | No | No | Optional | No | Yes |
+| **Query** | Tags | No | No | Yes | No | Yes |
+| **4K native** | Yes (3840x2160 PNG) | Yes (UHD) | Yes (server crop) | Yes (filter) | Depends | Varies |
+| **Orientation filter** | Yes (list data) | Landscape only | Yes (server) | Yes | Local scan | Yes |
+| **Used in place** | No | No | No | No | Yes | No |
+| **Rate limit** | GitHub | None | None | Higher with key | None | Varies |
+| **Experimental** | No | No | No | No | No | Flickr, Immich |
 
 [↑ Back to top](#top)
 
@@ -745,7 +758,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 <a id="acknowledgments"></a>
 ## 🙏 **20. Acknowledgments**
 
-- **Bing**, **Picsum**, **Wallhaven** for free image APIs
+- **Bing**, **Picsum**, **Wallhaven** for free image APIs; **FirstEverTech** photos by the author
 - **Flickr**, **Immich**, **Pexels**, **Pixabay**, **Unsplash** for optional provider APIs
 - AI audits
 - Open source community for continuous improvement
