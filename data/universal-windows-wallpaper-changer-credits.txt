@@ -2,9 +2,9 @@
 [Cyan] SUPPORT DEVELOPMENT
 [Cyan] ===================
 
- Universal Windows Wallpaper Changer sets a fresh 4K wallpaper on
- Windows from free image services (Bing, Picsum, Wallhaven), your
- own folders, or your own links - once, or on a schedule in the
+ Universal Windows Wallpaper Changer sets a fresh wallpaper on Windows
+ from free image services (FirstEverTech, Bing, Picsum, Wallhaven),
+ your own folders, or your own links - once, or on a schedule in the
  background with a tray icon.
 
  No administrator rights are needed and the tool is free and
