@@ -30,7 +30,7 @@
 [Green] - Support Patreon:[Yellow] tinyurl.com/fet-patron[Gray] - press [Black,Gray][1][Gray,Black] key
 [Green] - PayPal Donation:[Yellow] tinyurl.com/fet-paypal[Gray] - press [Black,Gray][2][Gray,Black] key
 [Green] - Buy Me a Coffee:[Yellow] tinyurl.com/fet-coffee[Gray] - press [Black,Gray][3][Gray,Black] key
-[Green] - Ko-Fi Support:[Yellow] tinyurl.com/fet-mykofi[Gray] - press [Black,Gray][4][Gray,Black] key
+[Green] - Ko-Fi Support:  [Yellow] tinyurl.com/fet-mykofi[Gray] - press [Black,Gray][4][Gray,Black] key
 [Green] - GitHub Sponsors:[Yellow] tinyurl.com/fet-github[Gray] - press [Black,Gray][5][Gray,Black] key
 
 [Cyan]
