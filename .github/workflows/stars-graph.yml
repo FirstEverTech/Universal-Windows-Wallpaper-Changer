@@ -1,0 +1,36 @@
+name: Generate Stars History
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: pip install requests matplotlib numpy
+      - name: Generate SVG
+        env:
+          GITHUB_TOKEN: ${{ secrets.STARS_PAT }}
+          REPO: ${{ github.repository }}
+        run: python .github/scripts/stars-graph.py
+      - name: Sync, commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp assets/stars-graph.svg /tmp/stars-graph.svg
+          git merge --abort 2>/dev/null || true
+          git rebase --abort 2>/dev/null || true
+          git reset --hard HEAD
+          git fetch origin main
+          git reset --hard origin/main
+          cp /tmp/stars-graph.svg assets/stars-graph.svg
+          git add assets/stars-graph.svg
+          git diff --cached --quiet || git commit -m "chore: update star history chart"
+          git push origin HEAD:main
