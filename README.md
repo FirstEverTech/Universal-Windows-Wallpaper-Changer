@@ -29,7 +29,7 @@
 </a>
 
 ## 🔧 Set a Fresh 4K Wallpaper on Windows — Once, or on a Schedule
-**Universal Windows Wallpaper Changer** downloads a random, free 4K wallpaper from a free image service (or picks one from your own folder) and applies it as the Windows desktop wallpaper. Runs once, or keeps changing in the background with a tray icon.
+**Universal Windows Wallpaper Changer** downloads a random, free high-resolution wallpaper (4K by default) from a free image service (or picks one from your own folder) and applies it as the Windows desktop wallpaper. Runs once, or keeps changing in the background with a tray icon.
 
 This project was built through a pragmatic collaboration between human expertise and AI-assisted tooling.
 
