@@ -3,6 +3,7 @@ import os, sys, math, time, requests, numpy as np, matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
+import matplotlib.ticker as mticker
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -57,7 +58,7 @@ def x_axis_config(start: datetime, end: datetime):
     years = days / 365.25
 
     if days < 32:
-        loc = mdates.FixedLocator(mdates.date2num([start, end]))
+        loc = mticker.FixedLocator(mdates.date2num([start, end]))
         fmt = mdates.DateFormatter("%b '%y")
         lbl = "Date"
     elif years < 1:
