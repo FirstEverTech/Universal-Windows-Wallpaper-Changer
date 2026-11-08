@@ -1,0 +1,42 @@
+# Windows file system
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+ehthumbs.db
+Icon?
+.DS_Store
+
+# PowerShell
+*.ps1xml
+*.psc1
+*.psd1
+*.psm1
+
+# Executables / installers (SFX packages are published in Releases only)
+*.exe
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+*.swp
+*.old
+
+# FirstEverTech photo collection (published in the "wallpapers" release, not in the repo)
+Wallpapers/
+FirstEverTech_*.jpg
+FirstEverTech_*.png
+wallpapers.json
+
+# IDE / editors
+.vscode/
+*.code-workspace
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Node / npm (in case a frontend is ever added)
+node_modules/
+npm-debug.log
+yarn-error.log
