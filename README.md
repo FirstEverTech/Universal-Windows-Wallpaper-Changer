@@ -25,7 +25,7 @@
 
 <a href="https://github.com/FirstEverTech">
   <img width="600" alt="" title="Universal Windows Wallpaper Changer"
-       src="assets/Universal-Windows-Wallpaper-Changer.png" />
+       src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/Windows_Wallpaper_Changer.png?raw=true" />
 </a>
 
 ## 🔧 Set a Fresh 4K Wallpaper on Windows — Once, or on a Schedule
