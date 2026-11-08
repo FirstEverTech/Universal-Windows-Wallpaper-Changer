@@ -118,6 +118,7 @@ If this project helped you, please click the "Star" button at the top of this pa
    7.2 [Image Source Selection](#image-source-selection)  
    7.3 [Download & Filter Pipeline](#download-filter-pipeline)  
    7.4 [Wallpaper Application](#wallpaper-application)  
+   7.5 [JPEG Import Quality (Windows 11)](#jpeg-import-quality)  
 8. [**Security First Approach**](#security-first-approach)  
    8.1 [Verified Security Layers](#verified-security-layers)  
 9. [**Usage Scenarios**](#usage-scenarios)  
@@ -204,7 +205,7 @@ _None — this is the initial release._
 
 | Source | API key | Query | Notes |
 |--------|---------|-------|-------|
-| **FirstEverTech** | No | Yes (tags) | Author's own 4K photos (PNG), default source in the wizard |
+| **FirstEverTech** | No | Yes (tags) | Author's own 4K photos (JPG), default source in the wizard |
 | **Bing** | No | No | Landscape only, max 3840 px |
 | **Picsum** | No | No | Random photos, server-side crop available |
 | **Wallhaven** | Optional | Yes | SFW only, higher rate limits with a key |
@@ -221,11 +222,13 @@ If a service supports a query and you give none, a random one of **Nature, Abstr
 
 #### FirstEverTech photos
 
-The photos are attached to the GitHub release tagged `wallpapers`, together with `wallpapers.json` (the list of photos with sizes and tags). File names follow `FirstEverTech_<tag>_<tag>_<tag>_<NNN>.png` (1-3 tags), e.g. `FirstEverTech_nature_wood_forest_001.png`. A query is a list of tags; every word must match a tag of the photo:
+The photos are attached to the GitHub release tagged `wallpapers`, together with `wallpapers.json` (the list of photos with sizes and tags). File names follow `FirstEverTech_<tag>_<tag>_<tag>_<NNN>.jpg` (1-3 tags), e.g. `FirstEverTech_nature_wood_forest_001.jpg`. A query is a list of tags; every word must match a tag of the photo:
 
     .\universal-windows-wallpaper-changer.ps1 -Source FirstEverTech -Query "nature forest" -Once
 
-The photos are the author's own work. The list is cached locally and refreshed on use.
+The photos are the author's own work (3840x2160, JPG, quality 100%). They are free to use through this tool and as your own wallpaper; redistribution and removing metadata or watermarks are not allowed. See the [`wallpapers` release](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer/releases/tag/wallpapers) for the full terms. The list is cached locally and refreshed on use.
+
+For best quality with JPG wallpapers, set the Windows JPEG import quality to 100% (see [7.5](#jpeg-import-quality)).
 
 <a id="background-mode"></a>
 ### ⚡ 4.2 Background Mode
@@ -427,6 +430,34 @@ Run:
 - `WallpaperStyle = 10` (Fill), `TileWallpaper = 0`
 - Attribution logged to `%LOCALAPPDATA%\...\attribution.log`
 - Old files cleaned up according to `-Keep`
+
+<a id="jpeg-import-quality"></a>
+### 🎚️ 7.5 JPEG Import Quality (Windows 11)
+
+When a wallpaper is set, Windows stores its own copy in `%APPDATA%\Microsoft\Windows\Themes\TranscodedWallpaper`. How much quality is kept depends on the source format and on the registry value `HKCU\Control Panel\Desktop\JPEGImportQuality`.
+
+**Measured on Windows 11, build 29704.100** (4K source images, one wallpaper change per test; other builds were not tested):
+
+| Test | Source | `JPEGImportQuality` | Windows copy | Size of Windows copy |
+|:----:|--------|---------------------|:------------:|---------------------:|
+| 1 | PNG, 15.0 MB | not set | PNG | 15.33 MB |
+| 2 | PNG, 15.0 MB | 100 | PNG | 15.33 MB |
+| 3 | JPG, 6.74 MB | not set | PNG | 2.14 MB |
+| 4 | JPG, 6.74 MB | 100 | PNG | 7.18 MB |
+
+What the numbers show:
+- **PNG** is not changed by Windows, with or without the setting (15.0 MB → 15.33 MB in tests 1 and 2).
+- **JPG without the setting** is reduced from 6.74 MB to 2.14 MB (about -68%). The resolution of the Windows copy is the same as the source in all four tests, so the reduction comes from lossy recompression, not from scaling.
+- **JPG with the setting at 100** gives 7.18 MB (about +6%), so the recompression loss is avoided.
+- The Windows copy is always a PNG, never a JPG, in all four tests.
+
+Not measured: the quality value Windows uses when the setting is not present. The tool's pre-check assumes 85% in that case; this is an assumption, not a measurement.
+
+**What this means for the FirstEverTech photos:** they are published as JPG (quality 100%) to save space and transfer. To keep their full quality on your desktop, set the value to 100:
+
+    .\universal-windows-wallpaper-changer.ps1 -JpegImportQuality Max
+
+Restore the Windows default with `-JpegImportQuality Default`. The change is per-user (HKCU), needs no administrator rights, and takes effect after you sign out and in (or restart) and set the wallpaper again. The interactive start screen offers this once as a pre-check; `-NoPrompt` hides the question.
 
 [↑ Back to top](#top)
 
@@ -639,6 +670,10 @@ _Once released:_ Known false positives from SFX + PowerShell execution. The PS1 
 
 Yes, but wallpaper changing is per-user. On Server Core (no desktop), it has no visible effect.
 
+### 🎚️ 13.12 Why do my JPG wallpapers look worse than PNG?
+
+Windows recompresses JPG wallpapers with loss unless `JPEGImportQuality` is set to 100; PNG wallpapers are left as they are. In our test a 6.74 MB JPG became a 2.14 MB copy without the setting and a 7.18 MB copy with it. Fix: `-JpegImportQuality Max`, then sign out and in. Details: [7.5](#jpeg-import-quality).
+
 [↑ Back to top](#top)
 
 <a id="image-source-comparison"></a>
@@ -648,7 +683,7 @@ Yes, but wallpaper changing is per-user. On Server Core (no desktop), it has no 
 |---------|---------------|------|--------|-----------|---------------|------------------|
 | **API key** | No | No | No | Optional | No | Yes |
 | **Query** | Tags | No | No | Yes | No | Yes |
-| **4K native** | Yes (3840x2160 PNG) | Yes (UHD) | Yes (server crop) | Yes (filter) | Depends | Varies |
+| **4K native** | Yes (3840x2160 JPG) | Yes (UHD) | Yes (server crop) | Yes (filter) | Depends | Varies |
 | **Orientation filter** | Yes (list data) | Landscape only | Yes (server) | Yes | Local scan | Yes |
 | **Used in place** | No | No | No | No | Yes | No |
 | **Rate limit** | GitHub | None | None | Higher with key | None | Varies |
@@ -701,6 +736,7 @@ For current limitations and workarounds, please see: [KNOWN_ISSUES.md](KNOWN_ISS
 - **Pixabay** free API delivers at most **1280 px** regardless of `-MinWidth`
 - **Unsplash** allows **50 requests per hour** — intervals under 5 minutes can hit the limit
 - **Background mode** runs for the current user only (per-user registry HKCU)
+- **JPG wallpapers** are recompressed with loss by Windows unless `JPEGImportQuality` is 100 (`-JpegImportQuality Max`); PNG is not affected, see [7.5](#jpeg-import-quality)
 - **Windows 10 LTSB 2015/2016** may need manual TLS 1.2 updates
 
 [↑ Back to top](#top)
