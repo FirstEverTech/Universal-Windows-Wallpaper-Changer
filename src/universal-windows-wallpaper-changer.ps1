@@ -1,6 +1,6 @@
 #Requires -Version 5.1
 <#PSScriptInfo
-.VERSION 2026.11.0001
+.VERSION 2026.11.0002
 .GUID c7e4a1b9-3f2d-4e8a-9b6c-5d1e2f3a4b7c
 .NAME universal-windows-wallpaper-changer
 .AUTHOR Marcin Grygiel
@@ -14,6 +14,7 @@
 .REQUIREDSCRIPTS
 .EXTERNALSCRIPTDEPENDENCIES
 .RELEASENOTES
+v2026.11.0002 - Tray menu shows a readable title for FirstEverTech photos; the Random run info shows the chosen source.
 v2026.11.0001 - Initial release
 #>
 
@@ -283,7 +284,7 @@ if ($Flags.Once -and $Cli.ContainsKey('IntervalMinutes')) {
 # =============================================
 # SCRIPT VERSION
 # =============================================
-$ScriptVersion = "2026.11.0001"
+$ScriptVersion = "2026.11.0002"
 # =============================================
 
 $DisplayVersion = $ScriptVersion
@@ -1941,6 +1942,17 @@ function Get-FirstEverTechBatch {
     return @($items | Sort-Object { Get-Random })
 }
 
+function Get-FirstEverTechTitle {
+    # 'FirstEverTech_Santorini_Island_Coast_012.jpg' -> 'Santorini Coast'
+    # (1st + 3rd tag; with fewer tags all of them). Each word starts with a capital letter.
+    param([string]$Name)
+    $parts = @(([IO.Path]::GetFileNameWithoutExtension($Name) -split '_') | Select-Object -Skip 1 |
+        Where-Object { $_ -and $_ -notmatch '^\d+$' })
+    if ($parts.Count -ge 3) { $parts = @($parts[0], $parts[2]) }
+    $words = @($parts | ForEach-Object { $_.Substring(0, 1).ToUpperInvariant() + $_.Substring(1) })
+    return ($words -join ' ')
+}
+
 function Get-FlickrBatch {
     # EXPERIMENTAL: not verified against a live account.
     param([hashtable]$Cfg, [string]$Query)
@@ -2372,7 +2384,8 @@ function Invoke-ProviderCycle {
     Write-Log ("Wallpaper set: {0} ({1}x{2}, {3}) from {4}" -f $file, $check.W, $check.H, (Format-Bytes $len), $Provider) 'INFO'
     try {
         $who = if ($isLocal) { '' } else { [string]$accepted.Author }
-        Write-TrayState @{ LastImage = (Split-Path $file -Leaf); LastAuthor = $who; LastFile = $file; LastProvider = $Provider
+        $title = if ($Provider -eq 'FirstEverTech') { Get-FirstEverTechTitle ([string]$accepted.Id) } else { '' }
+        Write-TrayState @{ LastImage = (Split-Path $file -Leaf); LastAuthor = $who; LastTitle = $title; LastFile = $file; LastProvider = $Provider
                            LastWidth = $check.W; LastHeight = $check.H; LastSize = $len }
     } catch { }
 
@@ -2383,12 +2396,17 @@ function Invoke-ProviderCycle {
     }
 }
 
+function Get-RandomProviderOrder {
+    return @(@('Bing', 'FirstEverTech', 'Picsum', 'Wallhaven') | Sort-Object { Get-Random })
+}
+
 function Invoke-Cycle {
     # Returns @{ Ok = $true; ... } or @{ Ok = $false; Error = '...' }.
-    param([hashtable]$Cfg)
-    $providers = if ($Cfg.Source -eq 'Random') {
-        @(@('Bing', 'FirstEverTech', 'Picsum', 'Wallhaven') | Sort-Object { Get-Random })
-    } else { @($Cfg.Source) }
+    # -Order: provider order for Random chosen by the caller (so it can show the first choice).
+    param([hashtable]$Cfg, [string[]]$Order)
+    $providers = if ($Order) { @($Order) }
+    elseif ($Cfg.Source -eq 'Random') { @(Get-RandomProviderOrder) }
+    else { @($Cfg.Source) }
 
     $errors = @()
     foreach ($prov in $providers) {
@@ -2725,7 +2743,8 @@ function Get-CurrentWallpaperLabel {
         $st = Read-TrayState
         if ($st -and $st.LastFile -and $cur -and ($cur -ieq [string]$st.LastFile)) {
             $txt = [string]$st.LastProvider
-            if ($st.LastAuthor) { $txt += ' - ' + [string]$st.LastAuthor }
+            if ($st.LastTitle) { $txt += ' - ' + [string]$st.LastTitle }
+            elseif ($st.LastAuthor) { $txt += ' - ' + [string]$st.LastAuthor }
             elseif ($st.LastImage) { $txt += ' - ' + [string]$st.LastImage }
             if ($txt.Length -gt 48) { $txt = $txt.Substring(0, 45) + '...' }
             # Number from the stored file name (<provider>_img_<yyyyMMdd>_<N>.<ext>) so the file is easy to find.
@@ -3167,7 +3186,8 @@ function Show-CycleResult {
 }
 
 function Show-RunInfo {
-    param([hashtable]$Cfg)
+    # -Provider: the source picked for this run when Source is Random.
+    param([hashtable]$Cfg, [string]$Provider = '')
     $pixels = if ($Cfg.MinPixels -gt 0) { '{0} Mpx' -f [math]::Round($Cfg.MinPixels / 1000000, 1) } else { 'off' }
     $sizeLbl = Format-Bytes (ConvertTo-Bytes $Cfg.MinSize)
     $quality = if ($Cfg.Source -eq 'Unsplash') {
@@ -3178,7 +3198,7 @@ function Show-RunInfo {
     Write-Host ' Time: ' -NoNewline -ForegroundColor Gray
     Write-Host (Get-Date -Format 'HH:mm:ss') -NoNewline -ForegroundColor Cyan
     Write-Host ' | Source: ' -NoNewline -ForegroundColor Gray
-    Write-Host (Get-SourceLabel $Cfg) -NoNewline -ForegroundColor White
+    Write-Host $(if ($Provider) { $Provider } else { Get-SourceLabel $Cfg }) -NoNewline -ForegroundColor White
     Write-Host ' | Type: ' -NoNewline -ForegroundColor Gray
     Write-Host (Get-QueryLabel $Cfg) -ForegroundColor White
 
@@ -3218,12 +3238,17 @@ function Invoke-OnceInteractive {
         Write-Host ' The background changer was stopped and removed from startup.' -ForegroundColor Yellow
         Write-Host ''
     }
-    Show-RunInfo $Cfg
+    $order = @()
+    if ($Cfg.Source -eq 'Random') { $order = @(Get-RandomProviderOrder) }
+    Show-RunInfo $Cfg -Provider $(if ($order.Count -gt 0) { $order[0] } else { '' })
     Write-Host ' Looking for a suitable image...' -ForegroundColor Yellow
     Write-Host ''
 
-    $res = Invoke-Cycle -Cfg $Cfg
+    $res = if ($order.Count -gt 0) { Invoke-Cycle -Cfg $Cfg -Order $order } else { Invoke-Cycle -Cfg $Cfg }
     if ($res.Ok) {
+        if ($order.Count -gt 0 -and $res.Provider -ne $order[0]) {
+            Write-Host (' Note: {0} did not provide a suitable image, {1} was used instead.' -f $order[0], $res.Provider) -ForegroundColor Yellow
+        }
         Show-CycleResult -Cfg $Cfg -Res $res
         Write-Host ''
         Write-Host ' Wallpaper changed successfully.' -ForegroundColor Green
@@ -3284,7 +3309,7 @@ function Invoke-BackgroundSetupInteractive {
     Write-Host ''
     Write-Host ' Back to start [S] or exit [X].' -ForegroundColor Gray
     Write-Host ''
-    $null = Read-MenuChoice -Prompt 'Your choice [S/X]' -Valid @('S','X') -Default 'X'
+    $null = Read-MenuChoice -Prompt 'Your choice [S or X]' -Valid @('S','X') -Default 'X'
     Exit-WithCredits
     exit 0
 }
@@ -3473,8 +3498,10 @@ function Show-StartScreen {
             @{ Key = 'Wizard'; Title = 'Wallpaper Changer Wizard'; Desc = 'Choose a source, filters and a schedule step by step.' },
             @{ Key = 'Random'; Title = 'Set one random 4K wallpaper now'; Desc = 'Bing, FirstEverTech, Picsum or Wallhaven. Free, no API key needed.' }
         )
-        if (Test-Path -LiteralPath (Get-ProfilePath 'default')) {
-            $items += @{ Key = 'Profile'; Title = 'Run your saved profile (default)'; Desc = 'The settings you saved in the wizard.' }
+        $profiles = @(Get-ProfileList | Where-Object { Test-ProfileName $_ } | Sort-Object { if ($_ -eq 'default') { '' } else { $_.ToLowerInvariant() } })
+        if ($profiles.Count -gt 0) {
+            $kind = if ($profiles -contains 'default') { if ($profiles.Count -gt 1) { 'default or custom' } else { 'default' } } else { 'custom' }
+            $items += @{ Key = 'Profile'; Title = "Run your saved profile ($kind)"; Desc = 'The settings you saved in the wizard.' }
         }
         if (Test-Path -LiteralPath $script:BgConfigFile) {
             $state = if (Test-TrayRunning) { 'running' } else { 'stopped' }
@@ -3505,7 +3532,21 @@ function Show-StartScreen {
                 return
             }
             'Profile' {
-                $p = Read-ConfigFile -Path (Get-ProfilePath 'default')
+                $pick = $profiles[0]
+                if ($profiles.Count -gt 1) {
+                    Show-Header
+                    Show-ScreenTitle '[START] SAVED PROFILES'
+                    Write-Host ''
+                    for ($j = 0; $j -lt $profiles.Count; $j++) {
+                        Write-Host (' [{0}] {1}' -f ($j + 1), $profiles[$j]) -ForegroundColor Yellow
+                    }
+                    Write-Host ''
+                    Write-Host ' Enter a number and press Enter, [S] for the start screen or [X] to exit.' -ForegroundColor Gray
+                    Write-Host ''
+                    $pc = Read-MenuChoice -Prompt ('Your choice [1-{0}]' -f $profiles.Count) -Valid @(1..$profiles.Count | ForEach-Object { [string]$_ })
+                    $pick = $profiles[[int]$pc - 1]
+                }
+                $p = Read-ConfigFile -Path (Get-ProfilePath $pick)
                 $cfg = Merge-Config -Base (New-DefaultConfig) -Over $p
                 Invoke-Run $cfg
                 return
@@ -4020,6 +4061,7 @@ function Invoke-Wizard {
     while ($true) {
         $cfg = Invoke-WizardCollect
         $message = $null
+        $saved = $false
         while ($true) {
             Show-Header
             Show-ScreenTitle '[WIZARD] SUMMARY'
@@ -4027,17 +4069,32 @@ function Invoke-Wizard {
             Show-ConfigSummary $cfg
             Write-Host ''
             if ($message) { Write-Host (' ' + $message) -ForegroundColor Green; Write-Host ''; $message = $null }
+            if ($saved) {
+                $ps1 = ".\$ToolFileName.ps1"
+                Write-Host ' Profile saved.' -ForegroundColor Green
+                Write-Host ''
+                Write-Host ' Manage it with:' -ForegroundColor Cyan
+                Write-Host ''
+                Write-Host "   $ps1 -Profile" -ForegroundColor White
+                Write-Host '       Loads the saved default profile.' -ForegroundColor Gray
+                Write-Host ''
+                Write-Host "   $ps1 -Profile <name>" -ForegroundColor White
+                Write-Host '       Loads a saved custom profile.' -ForegroundColor Gray
+                Write-Host ''
+                $saved = $false
+            }
             Write-Host ' What next?' -ForegroundColor Yellow
             Write-Host ''
             Write-Host '   [1] Run now' -ForegroundColor White
             Write-Host '   [2] Print the command only (do not run)' -ForegroundColor White
             Write-Host '   [3] Save settings as a default profile (use with -Profile)' -ForegroundColor White
-            Write-Host '   [4] Start again' -ForegroundColor White
+            Write-Host '   [4] Save settings as a custom profile (use with -Profile <name>)' -ForegroundColor White
+            Write-Host '   [5] Start again' -ForegroundColor White
             Write-Host ''
-            Write-WizardFooter 'Enter 1-4, or press Enter for the default (1 = Run now).'
-            $c = Read-MenuChoice -Prompt 'Your choice [1-4]' -Valid @('1', '2', '3', '4') -Default '1'
+            Write-WizardFooter 'Enter 1-5, or press Enter for the default (1 = Run now).'
+            $c = Read-MenuChoice -Prompt 'Your choice [1-5]' -Valid @('1', '2', '3', '4', '5') -Default '1'
             if ($c -eq '1') { Invoke-Run $cfg; return }
-            if ($c -eq '4') { break }
+            if ($c -eq '5') { break }
             if ($c -eq '2') {
                 Write-Host ''
                 Write-Host ' Command:' -ForegroundColor Cyan
@@ -4050,11 +4107,30 @@ function Invoke-Wizard {
             if ($c -eq '3') {
                 try {
                     Save-ConfigFile -Path (Get-ProfilePath 'default') -Cfg $cfg
-                    $message = "Profile saved. Run it with: .\$ToolFileName.ps1 -Profile"
+                    $saved = $true
                 } catch {
-                    $message = $null
                     Write-Host (" Could not save the profile: {0}" -f $_.Exception.Message) -ForegroundColor Red
                     Start-Sleep -Seconds 2
+                }
+            }
+            if ($c -eq '4') {
+                Write-Host ''
+                Write-Host ' Profile name: letters, digits, _ and - (max 40). Press Enter to cancel.' -ForegroundColor Gray
+                $pname = $null
+                while ($true) {
+                    $raw = Read-Nav 'Profile name'
+                    if ($raw -eq '') { break }
+                    if (Test-ProfileName $raw) { $pname = $raw; break }
+                    Write-Host ' Use only letters, digits, _ and - (max 40).' -ForegroundColor Red
+                }
+                if ($pname) {
+                    try {
+                        Save-ConfigFile -Path (Get-ProfilePath $pname) -Cfg $cfg
+                        $saved = $true
+                    } catch {
+                        Write-Host (" Could not save the profile: {0}" -f $_.Exception.Message) -ForegroundColor Red
+                        Start-Sleep -Seconds 2
+                    }
                 }
             }
         }
