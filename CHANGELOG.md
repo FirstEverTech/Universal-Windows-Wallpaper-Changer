@@ -6,6 +6,27 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 
 ---
 
+## [v2026.11.0002](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer/releases/tag/v2026.11.0002) - 2026-11-10
+
+### Cosmetic Update
+
+* Tray menu now shows a readable title for FirstEverTech photos, for example `Current wallpaper: FirstEverTech - Santorini Coast | Photo: 12` instead of `FirstEverTech - FirstEverTech`
+* **Set one random 4K wallpaper now** (source **Random**) now shows the source chosen for the run (for example `Source: Bing`) instead of `Source: Random`
+* If the chosen source cannot provide a suitable image, the fallback source is reported in a short note
+
+### Features
+
+* **Custom profiles**: the wizard can now save settings under a name of your choice (letters, digits, `_` and `-`, up to 40 characters), next to the default profile
+* Saved profiles are loaded with `-Profile` (default) or `-Profile <name>` (custom)
+* The start screen lists all saved profiles and lets you choose one when there is more than one
+* Clearer confirmation after saving a profile, with the commands to load it
+
+### Notes
+
+* Prompt text `Your choice [S/X]` changed to `Your choice [S or X]`
+
+---
+
 ## [v2026.11.0001](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer/releases/tag/v2026.11.0001) - 2026-11-08
 
 ### Initial Public Release
@@ -38,4 +59,5 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 
 # Release Links
 
+* [v2026.11.0002](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer/releases/tag/v2026.11.0002)
 * [v2026.11.0001](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer/releases/tag/v2026.11.0001)
