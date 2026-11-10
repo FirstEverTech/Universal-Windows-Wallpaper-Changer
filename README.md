@@ -28,7 +28,7 @@
        src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/Windows_Wallpaper_Changer.png?raw=true" />
 </a>
 
-## 🔧 Set a Fresh 4K Wallpaper on Windows — Once, or on a Schedule
+## 🔧 Free High-Resolution Wallpapers for Windows — 4K and Up, Once or on a Schedule
 **Universal Windows Wallpaper Changer** downloads a random, free high-resolution wallpaper (4K by default) from a free image service (or picks one from your own folder) and applies it as the Windows desktop wallpaper. Runs once, or keeps changing in the background with a tray icon.
 
 This project was built through a pragmatic collaboration between human expertise and AI-assisted tooling.
@@ -103,6 +103,8 @@ If this project helped you, please click the "Star" button at the top of this pa
    4.2 [Background Mode](#background-mode)  
    4.3 [Security & Verification](#security-verification)  
    4.4 [Customization](#customization)  
+   4.5 [Setup Wizard & Profiles](#setup-wizard-profiles)  
+   4.6 [API Key Management](#api-key-management)  
 5. [**System Requirements**](#system-requirements)  
    5.1 [System Requirements Table](#system-requirements-table)  
    5.2 [Windows Version Support](#windows-version-support)  
@@ -119,6 +121,7 @@ If this project helped you, please click the "Star" button at the top of this pa
    7.3 [Download & Filter Pipeline](#download-filter-pipeline)  
    7.4 [Wallpaper Application](#wallpaper-application)  
    7.5 [JPEG Import Quality (Windows 11)](#jpeg-import-quality)  
+   7.6 [Files & Locations](#files-and-locations)  
 8. [**Security First Approach**](#security-first-approach)  
    8.1 [Verified Security Layers](#verified-security-layers)  
 9. [**Usage Scenarios**](#usage-scenarios)  
@@ -161,6 +164,19 @@ If this project helped you, please click the "Star" button at the top of this pa
 <a id="latest-version"></a>
 ### 2.1 Latest Version
 
+**v2026.11.0002** → [Release Notes](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer/releases/tag/v2026.11.0002)
+
+### 🆕 **What's New**
+- **Tray menu**: "Current wallpaper" shows a readable title for FirstEverTech photos, built from the tags in the file name (e.g. `FirstEverTech - Nature Forest`).
+- **Random run info**: when the source is `Random`, the run summary shows which source was actually picked.
+
+---
+
+[↑ Back to top](#top)
+
+<a id="previous-releases"></a>
+### 2.2 Previous Release
+
 **v2026.11.0001** → [Release Notes](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer/releases/tag/v2026.11.0001)
 
 ### 🆕 **Initial Release**
@@ -172,15 +188,6 @@ If this project helped you, please click the "Star" button at the top of this pa
 - **Dynamic credits**: support links loaded from `data/universal-windows-wallpaper-changer-credits.txt` on GitHub RAW, with an embedded fallback.
 - **API keys** stored encrypted with DPAPI for the current Windows user; environment variables override stored keys.
 
----
-
-[↑ Back to top](#top)
-
-<a id="previous-releases"></a>
-### 2.2 Previous Release
-
-_None — this is the initial release._
-
 [↑ Back to top](#top)
 
 <a id="application-overview"></a>
@@ -190,6 +197,8 @@ _None — this is the initial release._
 |:---------------:|:--------------:|:-------------------:|:-------------------:|
 | ![Security](assets/1-security.png) | ![Source](assets/2-source.png) | ![Filter](assets/3-filter.png) | ![Apply](assets/4-apply.png) |
 | *Security check and update check* | *Source selection and image fetch* | *Filter and verify (size, dimensions, orientation)* | *Apply wallpaper / start tray* |
+
+After an interactive run a **credits screen** follows: keys `1`–`5` (and `A`–`E` for current promotional links) open the support links, any other key exits. Support and ad links are loaded from GitHub RAW with an embedded fallback. It is not shown with `-Quiet`.
 
 > **📸 SCREENSHOT PLACEHOLDER 1:**  
 > Insert four images into `assets/`: `1-security.png`, `2-source.png`, `3-filter.png`, `4-apply.png` — screenshots of the four console phases.  
@@ -228,14 +237,37 @@ The photos are attached to the GitHub release tagged `wallpapers`, together with
 
 The photos are the author's own work (3840x2160, JPG, quality 100%). They are free to use through this tool and as your own wallpaper; redistribution and removing metadata or watermarks are not allowed. See the [`wallpapers` release](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer/releases/tag/wallpapers) for the full terms. The list is cached locally and refreshed on use.
 
+In the tray menu a FirstEverTech photo is shown by a title built from its tags: the first and the third tag (with fewer tags, all of them), each word capitalised — `FirstEverTech_nature_wood_forest_001.jpg` becomes `Nature Forest`.
+
 For best quality with JPG wallpapers, set the Windows JPEG import quality to 100% (see [7.5](#jpeg-import-quality)).
 
 <a id="background-mode"></a>
 ### ⚡ 4.2 Background Mode
-- Hidden PowerShell process with **tray icon**
+- Hidden PowerShell process with **tray icon** (one instance at a time)
 - **Start at sign-in** via `HKCU\Software\Microsoft\Windows\CurrentVersion\Run`
-- Pause / Resume / Change now from tray menu
+- Runs from a stable copy of the script in `%LOCALAPPDATA%\UniversalWindowsWallpaperChanger\`, so moving or deleting the downloaded file does not break it
+- The first change happens within seconds, then every 1–1440 minutes; after a failed change it retries in at most 5 minutes (longer if the source is rate limited)
+- Pause / Resume / Change now from the tray menu, or with `-Background Pause | Resume | Start | Stop | Status`
+- `-Background Stop` also removes start at sign-in and the saved background settings
+- **Daily update check** in the tray: a balloon notification appears when a newer version exists
+- The start screen has a **Manage the background changer** entry (status, change now, pause / resume, stop, start again, remove settings)
 - State persisted in `%LOCALAPPDATA%\UniversalWindowsWallpaperChanger\state.json`
+
+**Tray menu:**
+
+| Item | What it shows / does |
+|------|----------------------|
+| Universal Windows Wallpaper Changer | Opens the project page |
+| Version `x` | Opens the release notes of the running version |
+| Current wallpaper | Source and title or author, e.g. `FirstEverTech - Nature Forest \| Photo: 12` (the number is the `_N` of the saved file name; not shown for files used in place) |
+| Resolution / Size / Format | e.g. `Resolution: 3840x2160 \| Size: 6.7MB \| Format: JPG (85%)`; JPG shows the Windows JPEG import quality (see [7.5](#jpeg-import-quality)). Shown only while the current wallpaper is the one set by the tool |
+| Last change | Outcome and attempt (e.g. `Successful (1/5)`), then the next change time and interval, or `Paused` |
+| Change now | Changes the wallpaper immediately (also resumes if paused) |
+| Pause / Resume | Stops or continues the schedule |
+| Last used wallpapers | Opens the wallpapers folder (with the number of stored images) |
+| Open Wallpaper Setup Wizard | Opens the wizard in a new window |
+| Startup with Windows (ON/OFF) | Toggles start at sign-in |
+| Exit | Closes the tray process; start at sign-in stays as it was |
 
 <a id="security-verification"></a>
 ### 🛡️ 4.3 Security & Verification
@@ -248,13 +280,33 @@ For best quality with JPG wallpapers, set the Windows JPEG import quality to 100
 ### 🎨 4.4 Customization
 - Minimum width, minimum pixels, minimum file size filters
 - Orientation: landscape, portrait, squarish
-- Output format (JPG/PNG) and quality for services that convert
-- `-Keep` limit for stored downloads (never deletes current wallpaper)
+- Output format (JPG/PNG) and quality for services that convert (currently Unsplash; other services deliver files as they are)
+- `-Keep <n>` (default 20, `0` = keep all) or `-KeepCurrentOnly` for stored downloads — only the tool's own `<service>_img_…` files in `-Dir` are ever deleted, never the current wallpaper and never files used in place
+- `-MaxAttempts` (1–20, default 5) and `-Dir` (where downloads are stored)
 - API keys overridable via environment variables
 
 > **📸 SCREENSHOT PLACEHOLDER 2:**  
 > Insert here: `assets/tray-menu.png` — tray icon context menu showing "Current wallpaper", "Pause", "Change now".  
 > **Action:** Skel w tej sekcji, wstaw obrazek po zrobieniu screenshota.
+
+<a id="setup-wizard-profiles"></a>
+### 🧙 4.5 Setup Wizard & Profiles
+- `-Wizard` (or the first entry of the start screen) asks, step by step: source → folder / link / server address (when the source needs it) → search phrase or tags → minimum width → minimum pixels → minimum file size → quality and format (Unsplash only) → orientation → how many images to keep → maximum attempts → run mode (once, or repeat every n minutes)
+- Steps that do not apply to the chosen source are skipped. A source that needs a key opens the key screen first
+- Wizard defaults: FirstEverTech, 3840 px, minimum file size 2.5M (the command-line default is off), landscape, keep 20, 5 attempts, once
+- The summary screen offers: **[1] Run now**, **[2] Print the command only** (ready to paste; keys are never part of it), **[3] Save as the default profile**, **[4] Save as a custom profile**, **[5] Start again**
+- **Profiles** are JSON files in `%APPDATA%\UniversalWindowsWallpaperChanger\profiles\`. Run the default one with `-Profile`, a named one with `-Profile <name>` (letters, digits, `_` and `-`, up to 40 characters). The start screen lists saved profiles
+- Settings are merged in this order: built-in defaults < profile < command line
+- At any wizard prompt `S` returns to the start screen and `X` exits (with the credits screen)
+
+<a id="api-key-management"></a>
+### 🔑 4.6 API Key Management
+- `-Keys` shows which keys are set (never the keys themselves); `-SetKey <service>` asks for a key with hidden input; `-RemoveKey <service|All>` removes the stored key and the user environment variable
+- The same is available interactively: start screen → **Manage API keys**, and the key screen the wizard opens for services that need one
+- Services: Flickr, Immich, Pexels, Pixabay, Unsplash (key required), Wallhaven (key optional)
+- Environment variables, which override stored keys: `FLICKR_API_KEY`, `IMMICH_API_KEY`, `PEXELS_API_KEY`, `PIXABAY_API_KEY`, `UNSPLASH_ACCESS_KEY`, `WALLHAVEN_API_KEY`
+- Stored keys are DPAPI-encrypted for the current Windows user in `HKCU\Software\FirstEverTech\UniversalWindowsWallpaperChanger\Keys`. The Immich server address is stored there too (`-ImmichUrl`)
+- A system-wide environment variable cannot be removed by the tool; it tells you where to remove it
 
 [↑ Back to top](#top)
 
@@ -313,14 +365,24 @@ For best quality with JPG wallpapers, set the Windows JPEG import quality to 100
 
     .\universal-windows-wallpaper-changer.ps1
 
-Opens the start screen: wizard or one random 4K wallpaper.
+Opens the start screen with these entries (optional ones appear only when they apply, and numbers shift accordingly):
+
+1. **Wallpaper Changer Wizard**
+2. **Set one random 4K wallpaper now**
+3. **Run your saved profile** (default or custom; you pick one when several exist)
+4. **Manage the background changer** (when configured; shows running / stopped)
+5. **Manage API keys**
+
+Press `X` to exit (credits screen).
 
 <a id="method-2-one-random-wallpaper"></a>
 ### 6.2 Method 2: One Random Wallpaper
 
     .\universal-windows-wallpaper-changer.ps1 -Once
 
-Sets one random 4K wallpaper from FirstEverTech, Bing, Picsum, or Wallhaven.
+Sets one random 4K wallpaper from FirstEverTech, Bing, Picsum, or Wallhaven. The run summary shows which source was picked; if it has no suitable image, the next one is used.
+
+An interactive one-time change replaces a configured background changer: it is stopped and removed from start at sign-in. `-Quiet -Once` leaves it alone.
 
 <a id="method-3-background-changer"></a>
 ### 6.3 Method 3: Background Changer
@@ -363,7 +425,7 @@ Run:
 
 | Option | Description |
 |--------|-------------|
-| `-help`, `-?` | Display help and exit |
+| `-help`, `-h`, `-?` | Display help and exit |
 | `-version`, `-v` | Display version and exit |
 | `-wizard` | Step-by-step setup wizard |
 | `-source <name>` | Image source (Random, FirstEverTech, Bing, Picsum, Wallhaven, Photos, Folder, Flickr, Immich, Pexels, Pixabay, Unsplash, URL) |
@@ -372,25 +434,26 @@ Run:
 | `-url <link\|file>` | Image link, or `.txt` list |
 | `-minwidth <px>` | Minimum width. Default: 3840 |
 | `-minpixels <n>` | Minimum width×height. Default: 0 (off) |
-| `-minsize <size>` | Minimum file size, e.g. 500K, 1M |
-| `-quality <1-100>` | JPEG quality for services that convert |
-| `-format <jpg\|png>` | Output format |
+| `-minsize <size>` | Minimum file size, e.g. 500K, 1M. Default: 0 (off) |
+| `-quality <1-100>` | JPEG quality for services that convert (Unsplash). Default: 95 |
+| `-format <jpg\|png>` | Output format for services that convert (Unsplash). Default: jpg |
 | `-orientation <o>` | landscape / portrait / squarish |
-| `-maxattempts <n>` | Images to try before failing (1-20) |
-| `-dir <path>` | Where downloaded wallpapers are stored |
-| `-keep <n>` | Keep last n downloaded files (0 = all) |
+| `-maxattempts <n>` | Images to try before failing (1-20). Default: 5 |
+| `-dir <path>` | Where downloaded wallpapers are stored. Default: `Pictures\Universal Windows Wallpapers` |
+| `-keep <n>` | Keep last n downloaded files. Default: 20 (0 = all) |
 | `-keepcurrentonly` | Keep only current wallpaper |
 | `-once` | Change once and exit |
 | `-intervalminutes <n>` | Change every n min (1-1440) in background |
-| `-profile [name]` | Run a saved profile |
+| `-profile [name]` | Run a saved profile (default name: `default`) |
 | `-fresh` | Discard stored queue |
 | `-immichurl <url>` | Immich server address |
 | `-background <cmd>` | Status / Start / Stop / Pause / Resume |
 | `-keys` | Show which keys are set |
 | `-setkey <service>` | Enter a key (hidden input) |
 | `-removekey <svc>` | Remove API key |
-| `-jpegimportquality <Max\|Default>` | Set Windows JPEG import quality |
-| `-quiet`, `-q` | No screens, no prompts, no credits |
+| `-jpegimportquality <Max\|Default>` | Set Windows JPEG import quality and exit |
+| `-noprompt` | Do not ask about the JPEG import quality |
+| `-quiet`, `-q` | No screens, no prompts, no credits; also skips self-hash verification and the update check |
 | `-noupdate` | Skip update check |
 | `-skipverify`, `-s` | Skip self-hash verification |
 | `-debug`, `-d` | Print diagnostic messages |
@@ -411,9 +474,9 @@ Run:
 <a id="image-source-selection"></a>
 ### 🖼️ 7.2 Image Source Selection
 
-- `Random` picks FirstEverTech, Bing, Picsum, and Wallhaven in random order
-- Local sources (`Photos`, `Folder`) scan files in place — never copy or delete
-- `URL` accepts a single link or a `.txt` list (local file or remote link)
+- `Random` picks FirstEverTech, Bing, Picsum, and Wallhaven in random order and falls back to the next one when a source has no suitable image
+- Local sources (`Photos`, `Folder`) scan files in place (jpg, jpeg, png, bmp, subfolders included) — never copy or delete. `Photos` skips the tool's own download folder. They try at least 30 images before giving up
+- `URL` accepts a single link or a `.txt` list (local file or remote link): up to 2000 unique links, only `http(s)://` lines are used, links must point to the image file itself. Dropbox `dl=0` links are rewritten to `dl=1`. Downloads are sent with a `Referer` and a browser-like user agent; if a site blocks the download (bot check), the tool says so — download the file in a browser and use `-Source Folder`
 
 <a id="download-filter-pipeline"></a>
 ### 📊 7.3 Download & Filter Pipeline
@@ -422,14 +485,18 @@ Run:
 - Download to temp, then verify real dimensions via System.Drawing
 - File type detected from magic bytes (not extension)
 - Accepted files renamed to `<provider>_img_<date>_<N>.<ext>`
+- Minimum file size is checked on the downloaded file (FirstEverTech also from the photo list, before download)
+- **Queue**: images fetched but not yet used are kept per source, query, minimum width and orientation in `%LOCALAPPDATA%\UniversalWindowsWallpaperChanger\queue` and used first next time (not for `Photos`, `Folder`, `Immich`, `URL`). `-Fresh` discards the queue
+- **Rate limits**: after HTTP 429 (and 403 for Unsplash) a source is paused — Unsplash and Pexels 55 min, Flickr 30 min, Pixabay and Wallhaven 2 min, others 5 min. The pause survives restarts; in background mode the next change waits for it
+- **Unsplash**: the image is requested at your minimum width in the chosen format and quality, and every used photo is reported to Unsplash as its API guidelines require
 
 <a id="wallpaper-application"></a>
 ### ⚡ 7.4 Wallpaper Application
 
 - `SystemParametersInfo` with `SPI_SETDESKWALLPAPER`
 - `WallpaperStyle = 10` (Fill), `TileWallpaper = 0`
-- Attribution logged to `%LOCALAPPDATA%\...\attribution.log`
-- Old files cleaned up according to `-Keep`
+- Attribution logged to `%LOCALAPPDATA%\UniversalWindowsWallpaperChanger\attribution.log` — one tab-separated line per image: time, source, id, author, page link, author link, file name
+- Old files cleaned up according to `-Keep` / `-KeepCurrentOnly`: only files named `<service>_img_…` in `-Dir` are counted (newest by creation time kept); the current wallpaper and local sources are never touched
 
 <a id="jpeg-import-quality"></a>
 ### 🎚️ 7.5 JPEG Import Quality (Windows 11)
@@ -457,7 +524,21 @@ Not measured: the quality value Windows uses when the setting is not present. Th
 
     .\universal-windows-wallpaper-changer.ps1 -JpegImportQuality Max
 
-Restore the Windows default with `-JpegImportQuality Default`. The change is per-user (HKCU), needs no administrator rights, and takes effect after you sign out and in (or restart) and set the wallpaper again. The interactive start screen offers this once as a pre-check; `-NoPrompt` hides the question.
+Restore the Windows default with `-JpegImportQuality Default`. The change is per-user (HKCU), needs no administrator rights, and takes effect after you sign out and in (or restart) and set the wallpaper again. Interactive runs show this as a pre-check after the startup checks, every time until the value is 100; `-NoPrompt` hides the question. It is also skipped with `-Quiet`, `-Format png` or redirected input.
+
+<a id="files-and-locations"></a>
+### 📂 7.6 Files & Locations
+
+| Location | Content |
+|----------|---------|
+| `%LOCALAPPDATA%\UniversalWindowsWallpaperChanger\` | `wallpaper.log` (trimmed at 512 KB), `attribution.log`, `state.json`, `background.json`, `command.txt`, `queue\`, `ratelimit_<source>.txt`, `firstevertech-wallpapers.json` (cached photo list), the installed script copy used by background mode |
+| `%APPDATA%\UniversalWindowsWallpaperChanger\profiles\` | Saved profiles (`<name>.json`) |
+| `%USERPROFILE%\Pictures\Universal Windows Wallpapers\` | Downloaded wallpapers (default `-Dir`) |
+| `HKCU\Software\FirstEverTech\UniversalWindowsWallpaperChanger` | DPAPI-encrypted API keys (`Keys`), Immich server address |
+| `HKCU\Software\Microsoft\Windows\CurrentVersion\Run` | Start at sign-in (`UniversalWindowsWallpaperChanger`) |
+| `HKCU\Control Panel\Desktop` | `WallPaper`, `WallpaperStyle`, `TileWallpaper`; `JPEGImportQuality` only if you set it |
+
+Data from earlier folders (`...\FirstEverTech\UniversalWindowsWallpaperChanger`) is migrated automatically on start.
 
 [↑ Back to top](#top)
 
@@ -471,12 +552,14 @@ Restore the Windows default with `-JpegImportQuality Default`. The change is per
     2. API Key Safety   → DPAPI encryption (current Windows user), never logged
     3. Command Line     → Keys never accepted on the command line
     4. Log Safety       → Secrets masked with Hide-Secret
-    5. Update Safety    → Version verification before download
+    5. Update Safety    → SHA-256 check of the update; previous copy restored on mismatch
     6. PSGallery        → Verified by PowerShellGet (self-check skipped)
+
+Self-hash verification and the update check run in interactive mode only. `-Quiet` and the background tray process skip them.
 
 ### 🏷️ 8.2 Why is the certificate "not trusted"?
 
-The FirstEver.tech certificate is self-signed. The PowerShell script (`universal-windows-wallpaper-changer.ps1`) is the authoritative source of the tool. Its SHA-256 hash is published on GitHub and verified automatically on every run. The SFX executable is a convenience wrapper — it installs the same PS1, whose hash is verified on every run.
+The FirstEver.tech certificate is self-signed. The PowerShell script (`universal-windows-wallpaper-changer.ps1`) is the authoritative source of the tool. Its SHA-256 hash is published on GitHub and verified automatically on every interactive run. The SFX executable is a convenience wrapper — it installs the same PS1, whose hash is verified on every interactive run.
 
 ### 🛡️ 8.3 Why does VirusTotal show detections for the SFX executable?
 
@@ -501,9 +584,11 @@ _Once the SFX is released:_ The SFX package may show a small number of detection
 <a id="it-professionals"></a>
 ### 💼 9.2 IT Professionals
 
-- **Silent deployment** via `-quiet`
+- **Silent deployment** via `-quiet` — no screens, prompts or credits; exit code 0 on success, 1 on failure; details in `wallpaper.log`. Self-hash verification and the update check are skipped in this mode
+- **Silent background setup** — `-quiet -IntervalMinutes 60 -Source Bing` installs the background changer and start at sign-in without any UI
 - **Per-user** — no admin rights, runs in HKCU
-- **Profile-based** — save settings with `-wizard`, deploy with `-Profile`
+- **Profile-based** — save settings with `-wizard` (default or custom profile), copy the JSON from `%APPDATA%\UniversalWindowsWallpaperChanger\profiles\`, run with `-Profile [name]`
+- **Keys for unattended setups** — `-SetKey` asks interactively; use the environment variables from [4.6](#api-key-management) instead
 
 <a id="system-builders"></a>
 ### 🛠 9.3 System Builders
@@ -522,7 +607,7 @@ _Once the SFX is released:_ The SFX package may show a small number of detection
 
 - **File**: [`WindowsWallpaperChanger-<version>-Win10-Win11.exe`](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer/releases)
 - **Features**: One-click install and start, installs the script to a fixed per-user folder, also used by the built-in updater
-- **Security**: Self-verifying SHA-256 hash check on every run
+- **Security**: Self-verifying SHA-256 hash check on every interactive run
 - **For**: Most users, easiest method
 
 <a id="option-2-direct-ps1"></a>
@@ -530,7 +615,7 @@ _Once the SFX is released:_ The SFX package may show a small number of detection
 
 - **File**: [`universal-windows-wallpaper-changer.ps1`](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer/blob/main/src/universal-windows-wallpaper-changer.ps1)
 - **Features**: Full control, modifiable code, transparency
-- **Security**: Self-verifying SHA-256 hash check on every run
+- **Security**: Self-verifying SHA-256 hash check on every interactive run
 - **For**: Advanced users, administrators, customization
 
     powershell -ExecutionPolicy Bypass -File .\universal-windows-wallpaper-changer.ps1
@@ -540,7 +625,7 @@ _Once the SFX is released:_ The SFX package may show a small number of detection
 
 - **Method**: [`Install-Script universal-windows-wallpaper-changer`](https://www.powershellgallery.com/packages/universal-windows-wallpaper-changer) - PowerShell command
 - **Features**: Versioned distribution via PSGallery, one-line install/update (`Update-Script`)
-- **Security**: Self-verifying SHA-256 hash check on every run
+- **Security**: Self-verifying SHA-256 hash check on every interactive run
 - **For**: Advanced users, administrators
 
 <a id="option-4-source-code"></a>
@@ -656,7 +741,7 @@ Before running interactively, the tool calculates its own SHA-256 hash and compa
 
 ### 🏷️ 13.8 Why is the certificate "not trusted"?
 
-The FirstEver.tech certificate is self-signed. The PS1 script is the authoritative source, verified by SHA-256 on every run. The SFX is a convenience wrapper.
+The FirstEver.tech certificate is self-signed. The PS1 script is the authoritative source, verified by SHA-256 on every interactive run. The SFX is a convenience wrapper.
 
 ### 🛡️ 13.9 Why does VirusTotal show detections for the SFX?
 
@@ -673,6 +758,22 @@ Yes, but wallpaper changing is per-user. On Server Core (no desktop), it has no 
 ### 🎚️ 13.12 Why do my JPG wallpapers look worse than PNG?
 
 Windows recompresses JPG wallpapers with loss unless `JPEGImportQuality` is set to 100; PNG wallpapers are left as they are. In our test a 6.74 MB JPG became a 2.14 MB copy without the setting and a 7.18 MB copy with it. Fix: `-JpegImportQuality Max`, then sign out and in. Details: [7.5](#jpeg-import-quality).
+
+### 🛑 13.13 How do I stop the background changer?
+
+`-Background Stop` (or start screen → Manage the background changer → Stop) ends the process and removes start at sign-in and the saved settings. The tray menu **Exit** only closes the tray process; start at sign-in stays as it was. To pause without stopping, use **Pause** or `-Background Pause`.
+
+### 🔀 13.14 Does a one-time change affect the background changer?
+
+Yes, when run interactively: `-Once` (or the "Set one random 4K wallpaper now" entry) stops the background changer and removes it from start at sign-in, so it does not overwrite your wallpaper. `-Quiet -Once` does not.
+
+### 🗂️ 13.15 Can I use my own images?
+
+Yes: `-Source Photos` (your Pictures folder), `-Source Folder -Folder <path>` (subfolders included) or `-Source URL -URL <link or .txt list>`. Files in folders are used in place and never copied or deleted.
+
+### 💾 13.16 Can I save my settings?
+
+Yes. The wizard saves a default profile (`-Profile`) or a named one (`-Profile <name>`), see [4.5](#setup-wizard-profiles). Command-line options override profile values.
 
 [↑ Back to top](#top)
 
@@ -712,7 +813,7 @@ Windows recompresses JPG wallpapers with loss unless `JPEGImportQuality` is set 
 
 | **Stage** | **Estimated Usage** | **Notes** |
 |----------|---------------------|-----------|
-| Script | ~100 KB | Single PS1 file |
+| Script | ~200 KB | Single PS1 file |
 | Log file | < 512 KB | Auto-trimmed at 512 KB |
 | Downloaded wallpapers | 2–10 MB each | Depends on source resolution |
 | State & queue files | < 1 MB | JSON and CliXML |
