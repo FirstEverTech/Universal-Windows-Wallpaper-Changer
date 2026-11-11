@@ -1,6 +1,6 @@
 #Requires -Version 5.1
 <#PSScriptInfo
-.VERSION 2026.11.0002
+.VERSION 2026.11.0003
 .GUID c7e4a1b9-3f2d-4e8a-9b6c-5d1e2f3a4b7c
 .NAME universal-windows-wallpaper-changer
 .AUTHOR Marcin Grygiel
@@ -14,6 +14,7 @@
 .REQUIREDSCRIPTS
 .EXTERNALSCRIPTDEPENDENCIES
 .RELEASENOTES
+v2026.11.0003 - The update package is verified against its own SHA-256 (<tool>-<version>-exe.sha256) before it is run.
 v2026.11.0002 - Tray menu shows a readable title for FirstEverTech photos; the Random run info shows the chosen source.
 v2026.11.0001 - Initial release
 #>
@@ -284,7 +285,7 @@ if ($Flags.Once -and $Cli.ContainsKey('IntervalMinutes')) {
 # =============================================
 # SCRIPT VERSION
 # =============================================
-$ScriptVersion = "2026.11.0002"
+$ScriptVersion = "2026.11.0003"
 # =============================================
 
 $DisplayVersion = $ScriptVersion
@@ -1289,6 +1290,26 @@ function Install-UpdateFromExe {
             Write-DebugMessage "EXE download failed: $($_.Exception.Message)"
             return 'Unavailable'
         }
+
+        # Reference hash of the package itself: it is checked before the package is run.
+        $exeExpected = $null
+        try {
+            $line = Get-WebText -Url ($base + ('{0}-{1}-exe.sha256' -f $ToolFileName, $LatestVersion))
+            if ($line -match '^([A-Fa-f0-9]{64})') { $exeExpected = $matches[1].ToUpper() }
+        } catch { Write-DebugMessage "Package hash download failed: $($_.Exception.Message)" }
+        if (-not $exeExpected) {
+            Write-Host " ERROR: Could not read the package hash. The update was NOT installed." -ForegroundColor Red
+            return 'Failed'
+        }
+        $exeActual = (Get-FileHash -LiteralPath $tmpExe -Algorithm SHA256).Hash.ToUpper()
+        Write-DebugMessage "Package expected hash: $exeExpected"
+        Write-DebugMessage "Package actual hash:   $exeActual"
+        if ($exeActual -ne $exeExpected) {
+            Write-Host " FAIL: Hash of the downloaded package does not match." -ForegroundColor Red
+            Write-Host " The update was NOT installed." -ForegroundColor Red
+            return 'Failed'
+        }
+        Write-Host " Package hash verification: PASSED" -ForegroundColor Green
 
         # Reference hash of the script that is inside the package.
         $expected = $null
