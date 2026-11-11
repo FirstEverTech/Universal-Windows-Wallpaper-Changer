@@ -200,10 +200,6 @@ If this project helped you, please click the "Star" button at the top of this pa
 
 After an interactive run a **credits screen** follows: keys `1`–`5` (and `A`–`E` for current promotional links) open the support links, any other key exits. Support and ad links are loaded from GitHub RAW with an embedded fallback. It is not shown with `-Quiet`.
 
-> **📸 SCREENSHOT PLACEHOLDER 1:**  
-> Insert four images into `assets/`: `1-security.png`, `2-source.png`, `3-filter.png`, `4-apply.png` — screenshots of the four console phases.  
-> **Action:** Skel w tej sekcji, wstaw obrazki po utworzeniu folderu `assets/` w repo.
-
 [↑ Back to top](#top)
 
 <a id="key-features"></a>
