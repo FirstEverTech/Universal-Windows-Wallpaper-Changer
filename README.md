@@ -193,10 +193,10 @@ If this project helped you, please click the "Star" button at the top of this pa
 <a id="application-overview"></a>
 ## 🖼️ **3. Application Overview**
 
-| Phase 1 | Phase 2 | Phase 3 | Phase 4 |
-|:---------------:|:--------------:|:-------------------:|:-------------------:|
-| ![Security](assets/1-security.png) | ![Source](assets/2-source.png) | ![Filter](assets/3-filter.png) | ![Apply](assets/4-apply.png) |
-| *Security check and update check* | *Source selection and image fetch* | *Filter and verify (size, dimensions, orientation)* | *Apply wallpaper / start tray* |
+| Phase 1 | Phase 2 | Phase 3 | Phase 4 | Phase 5 |
+|:---------------:|:--------------:|:-------------------:|:-------------------:|:-------------------:|
+| ![Security](assets/1-security.png) | ![Menu](assets/2-menu.png) | ![Source](assets/3-source.png) | ![Filter](assets/4-filter.png) | ![Taskbar](assets/5-taskbar.png) |
+| *Security check and update check* | *Main menu (wizard, random image, profiles, background task, API keys)* | *Image sources (online service with/without API key, local, URL)* | *Image filter (phrase, quality, size, format, orientation, run mode)* | *Settings are available via the tray icon in the Windows taskbar* |
 
 After an interactive run a **credits screen** follows: keys `1`–`5` (and `A`–`E` for current promotional links) open the support links, any other key exits. Support and ad links are loaded from GitHub RAW with an embedded fallback. It is not shown with `-Quiet`.
 
