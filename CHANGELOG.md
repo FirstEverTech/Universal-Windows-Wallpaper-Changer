@@ -6,6 +6,22 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 
 ---
 
+## [v2026.11.0003](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer/releases/tag/v2026.11.0003) - 2026-11-11
+
+### 🛡️ Security
+
+* The update package (SFX EXE) is now verified against its own SHA-256 **before** it is run. The reference hash is read from the new release file `universal-windows-wallpaper-changer-<version>-exe.sha256`
+* If the hash does not match, or the hash file cannot be read, nothing is installed
+* The hash check of the installed script and the restore of the previous copy are unchanged
+
+### Notes
+
+* Every version release now also contains `universal-windows-wallpaper-changer-<version>-exe.sha256` (hash of the SFX package)
+* The package check is done by the updater of the installed version, so it applies when updating from v2026.11.0003 onward; updating from earlier versions uses their older updater
+* No change in how wallpapers are fetched, filtered or set
+
+---
+
 ## [v2026.11.0002](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer/releases/tag/v2026.11.0002) - 2026-11-10
 
 ### Cosmetic Update
@@ -59,5 +75,6 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 
 # Release Links
 
+* [v2026.11.0003](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer/releases/tag/v2026.11.0003)
 * [v2026.11.0002](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer/releases/tag/v2026.11.0002)
 * [v2026.11.0001](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer/releases/tag/v2026.11.0001)
