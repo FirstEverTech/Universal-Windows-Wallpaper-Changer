@@ -41,9 +41,9 @@ Windows has no built-in way to rotate wallpapers from multiple free sources with
 [![Sources](https://img.shields.io/badge/Sources-12-blue?style=flat-square)](#41-multiple-free-sources)[![Free Without Key](https://img.shields.io/badge/No_API_Key-FirstEverTech_%7C_Bing_%7C_Picsum_%7C_Wallhaven-blue?style=flat-square)](#41-multiple-free-sources)[![Background Mode](https://img.shields.io/badge/Background-Tray_%2B_Sign--in-blue?style=flat-square)](#42-background-mode)[![Self-Hash](https://img.shields.io/badge/Self--Hash-SHA256-blue?style=flat-square)](#81-verified-security-layers)[![Admin Rights](https://img.shields.io/badge/Admin_Rights-Not_Required-blue?style=flat-square)](#5-system-requirements)
 
 For detailed documentation and guides, see:  
-→ **[How the image filter pipeline works](#73-download--filter-pipeline)**  
-→ **[Deploying via MDM / silent mode](#92-it-professionals)**  
-→ **[Security and verification](#8-security-first-approach)**  
+→ **[How the image filter pipeline works](#73-download--filter-pipeline)** (coming soon)  
+→ **[Deploying via MDM / silent mode](#92-it-professionals)** (coming soon)  
+→ **[Security and verification](#8-security-first-approach)** (coming soon)  
 
 👉 [Share your feedback!](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer/issues)
 
