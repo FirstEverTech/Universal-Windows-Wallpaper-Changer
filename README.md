@@ -36,6 +36,12 @@ This project was built through a pragmatic collaboration between human expertise
 ### Why This Tool Exists
 Windows has no built-in way to rotate wallpapers from multiple free sources without third-party bloatware. This tool gives you a zero-config way to keep your desktop fresh — with no API keys required for the default sources and no administrator rights.
 
+### Wallpapers in 4K from FirstEverTech
+
+In addition to free wallpapers selected with a filter from various online services, my tool now also includes my own wallpapers. I’m pleased to announce the first series of 30 photos in 4K quality and PNG format, taken on the island of Santorini. You can also use the filter to search for photos by phrase (1-3 words), e.g. Sunset, Architecture, Ship. I will add more photos from other locations in the future.
+
+[![Santorini - new 4K wallpapers](https://raw.githubusercontent.com/FirstEverTech/FirstEverTech/main/Images/FET_01_Santorini.png)](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer/releases#release-wallpapers)
+
 ---
 
 [![Sources](https://img.shields.io/badge/Sources-12-blue?style=flat-square)](#41-multiple-free-sources)[![Free Without Key](https://img.shields.io/badge/No_API_Key-FirstEverTech_%7C_Bing_%7C_Picsum_%7C_Wallhaven-blue?style=flat-square)](#41-multiple-free-sources)[![Background Mode](https://img.shields.io/badge/Background-Tray_%2B_Sign--in-blue?style=flat-square)](#42-background-mode)[![Self-Hash](https://img.shields.io/badge/Self--Hash-SHA256-blue?style=flat-square)](#81-verified-security-layers)[![Admin Rights](https://img.shields.io/badge/Admin_Rights-Not_Required-blue?style=flat-square)](#5-system-requirements)
