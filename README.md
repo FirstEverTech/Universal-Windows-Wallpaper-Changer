@@ -40,7 +40,7 @@ Windows has no built-in way to rotate wallpapers from multiple free sources with
 
 In addition to free wallpapers selected with a filter from various online services, my tool now also includes my own wallpapers. I’m pleased to announce the first series of 30 photos in 4K quality and PNG format, taken on the island of Santorini. You can also use the filter to search for photos by phrase (1-3 words), e.g. Sunset, Architecture, Ship. I will add more photos from other locations in the future.
 
-[![Santorini - new 4K wallpapers](https://raw.githubusercontent.com/FirstEverTech/FirstEverTech/main/Images/FET_01_Santorini.png)](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer/releases#release-wallpapers)
+[![Santorini - new 4K wallpapers](https://raw.githubusercontent.com/FirstEverTech/FirstEverTech/main/Images/FET_01_Santorini.png)](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer/releases/tag/wallpapers)
 
 ---
 
