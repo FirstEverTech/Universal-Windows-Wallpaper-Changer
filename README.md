@@ -28,7 +28,7 @@
        src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/Windows_Wallpaper_Changer.png?raw=true" />
 </a>
 
-## 🔧 Free High-Resolution Wallpapers for Windows — 4K and Up, Once or on a Schedule
+## 🔧 Free High-Resolution Wallpapers for Windows You can Schedule
 **Universal Windows Wallpaper Changer** downloads a random, free high-resolution wallpaper (4K by default) from a free image service (or picks one from your own folder) and applies it as the Windows desktop wallpaper. Runs once, or keeps changing in the background with a tray icon.
 
 This project was built through a pragmatic collaboration between human expertise and AI-assisted tooling.
